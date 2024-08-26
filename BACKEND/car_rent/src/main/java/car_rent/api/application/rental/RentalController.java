@@ -42,6 +42,11 @@ public class RentalController {
         return ResponseEntity.status(HttpStatus.OK).body(rentalService.convertToDto(rental));
     }
 
+    @GetMapping(path = "/count")
+    public ResponseEntity<Long> getCountRental (){
+        return ResponseEntity.status(HttpStatus.OK).body(rentalService.getCountRental());
+    }
+
     @PostMapping("/{id}/finalize")
     public ResponseEntity<RentalDto> finalizeRental(@PathVariable Long id) {
         RentalDto rental = rentalService.finalizeRental(id);

@@ -1,5 +1,8 @@
 package car_rent.api.application.vehicle;
 
+import car_rent.api.application.rental.RentalDto;
+import car_rent.api.application.rental.RentalRequestDto;
+import car_rent.api.application.rental.RentalService;
 import car_rent.api.domain.vehicle.VehicleType;
 import car_rent.api.domain.vehicle.VehicleModel;
 import car_rent.api.shared.utils.PaginationHeaders;
@@ -25,6 +28,9 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
 
+    @Autowired
+    private RentalService rentalService;
+
     @GetMapping
     public ResponseEntity<List<VehicleModel>> getVehicles(
             @RequestParam(value = "type", required = false) VehicleType type,
@@ -49,10 +55,16 @@ public class VehicleController {
         return ResponseEntity.status(HttpStatus.OK).body(vehicleService.getVehicleByID(id));
     }
 
+    @GetMapping(path = "/count")
+    public ResponseEntity<Long> getCountVehicle (){
+        return ResponseEntity.status(HttpStatus.OK).body(vehicleService.getCountVehicle());
+    }
+
     @PostMapping
     public ResponseEntity<VehicleModel> addVehicle (@RequestBody @Valid VehicleDto vehicleDto){
         VehicleModel vehicle = new VehicleModel();
         BeanUtils.copyProperties(vehicleDto,vehicle);
+        vehicle.setRented(false);
         VehicleModel created = vehicleService.addVehicles(vehicle);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(created.getId()).toUri();
         return ResponseEntity.created(location).body(created);
@@ -68,5 +80,12 @@ public class VehicleController {
     public ResponseEntity<String> deleteVehicle (@PathVariable(value = "id")Long id){
         VehicleModel vehicle = vehicleService.deleteVehicle(id);
         return ResponseEntity.status(HttpStatus.OK).body("Veículo de placa" + vehicle.getLicensePlate() + " deletado com sucesso.");
+    }
+
+    @PostMapping("/{id}/rent")
+    public ResponseEntity<RentalDto> rentVehicle(@PathVariable(value = "id") Long id, @RequestBody RentalRequestDto r) {
+        RentalDto rental = rentalService.rentVehicle(r.customerId(), id);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(rental.id()).toUri();
+        return ResponseEntity.created(location).body(rental);
     }
 }

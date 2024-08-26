@@ -19,6 +19,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 @Service
@@ -101,5 +102,32 @@ public class RentalService {
                 rental.getStartDate(),
                 rental.getFinalDate()
         );
+    }
+
+    @Transactional
+    public RentalDto rentVehicle(Long customerId, Long vehicleId) {
+        VehicleModel vehicle = vehicleRepository.findById(vehicleId)
+                .orElseThrow(() -> new RuntimeException("Vehicle not found!"));
+        CustomerModel customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found!"));
+
+        if (vehicle.getRented()) throw new IllegalArgumentException("Este veículo já está alugado.");
+
+        RentalModel rental = new RentalModel();
+        rental.setCustomer(customer);
+        rental.setVehicle(vehicle);
+        rental.setStatus(StatusType.APPROVED);
+        this.validate(rental);
+
+        vehicle.setRented(true);
+        vehicle.setRental(rental);
+
+        RentalModel savedRental = rentalRepository.save(rental);
+        return convertToDto(savedRental);
+    }
+
+    @Transactional
+    public long getCountRental(){
+        return rentalRepository.count();
     }
 }
