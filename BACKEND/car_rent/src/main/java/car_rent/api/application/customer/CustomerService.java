@@ -56,4 +56,9 @@ public class CustomerService {
         customerRepository.delete(customer);
         return customer;
     }
+
+    @Transactional
+    public long getCountCustomer(){
+        return customerRepository.count();
+    }
 }

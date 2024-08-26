@@ -76,5 +76,10 @@ public class VehicleService {
         return vehicle;
     }
 
+    @Transactional
+    public long getCountVehicle(){
+        return vehicleRepository.count();
+    }
+
 
 }

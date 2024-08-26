@@ -3,6 +3,7 @@ package car_rent.api.application.customer;
 import car_rent.api.domain.customer.CustomerModel;
 import car_rent.api.shared.utils.PaginationHeaders;
 import jakarta.validation.Valid;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,6 +45,12 @@ public class CustomerController {
     public ResponseEntity<CustomerModel> getCustomerById (@PathVariable(value = "id") Long id){
         return ResponseEntity.status(HttpStatus.OK).body(customerService.getCustomerById(id));
     }
+
+    @GetMapping(path = "/count")
+    public ResponseEntity<Long> getCountCustomer (){
+        return ResponseEntity.status(HttpStatus.OK).body(customerService.getCountCustomer());
+    }
+
 
     @PostMapping
     public ResponseEntity<CustomerModel> addCustomer(@RequestBody @Valid CustomerDto customerDto) {

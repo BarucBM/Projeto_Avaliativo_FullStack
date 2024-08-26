@@ -6,6 +6,10 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerModel, Long>, PagingAndSortingRepository<CustomerModel, Long>, JpaSpecificationExecutor<CustomerModel> {
+    Optional<CustomerModel> findById(Long id);
+
 }
