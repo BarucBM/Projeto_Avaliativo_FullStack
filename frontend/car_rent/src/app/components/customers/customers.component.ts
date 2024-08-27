@@ -3,12 +3,12 @@ import {CustomerModel} from "../../models/customer.model";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
     selector: 'app-customers',
     standalone: true,
-    imports: [CommonModule, FormsModule, FaIconComponent],
+    imports: [CommonModule, FormsModule, FaIconComponent, RouterLink],
     templateUrl: './customers.component.html'
 })
 export class CustomersComponent {

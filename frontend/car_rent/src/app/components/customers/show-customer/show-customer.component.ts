@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-show-customer',
   standalone: true,
   imports: [],
-  templateUrl: './show-customer.component.html',
-  styleUrl: './show-customer.component.sass'
+  templateUrl: './show-customer.component.html'
 })
 export class ShowCustomerComponent {
 

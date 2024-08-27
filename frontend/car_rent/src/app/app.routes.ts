@@ -16,12 +16,12 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'login', component: LoginComponent },
     { path: 'customers', component: CustomersComponent },
-    { path: 'customer/{:id}', component: ShowCustomerComponent },
+    { path: 'customer/:id', component: ShowCustomerComponent },
     { path: 'customer/new', component:  NewCustomerComponent},
-    { path: 'customer/{:id}/edit', component: EditCustomerComponent },
+    { path: 'customer/:id/edit', component: EditCustomerComponent },
     { path: 'vehicles', component: VehiclesComponent },
-    { path: 'vehicle/{:id}', component: ShowVehicleComponent },
+    { path: 'vehicle/:id', component: ShowVehicleComponent },
     { path: 'vehicle/new', component: NewVehicleComponent },
-    { path: 'vehicle/{:id}/edit', component: EditVehicleComponent },
+    { path: 'vehicle/:id/edit', component: EditVehicleComponent },
 ];
 export const routing: EnvironmentProviders = provideRouter(routes);

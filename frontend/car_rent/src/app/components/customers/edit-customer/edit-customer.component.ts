@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-edit-customer',
   standalone: true,
   imports: [],
-  templateUrl: './edit-customer.component.html',
-  styleUrl: './edit-customer.component.sass'
+  templateUrl: './edit-customer.component.html'
 })
 export class EditCustomerComponent {
 

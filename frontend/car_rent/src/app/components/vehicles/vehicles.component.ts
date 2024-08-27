@@ -2,14 +2,15 @@ import {Component} from '@angular/core';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {CommonModule} from "@angular/common";
 import {VehicleModel} from "../../models/vehicle.model";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
     selector: 'vehicles',
     standalone: true,
     imports: [
         CommonModule,
-        FaIconComponent
+        FaIconComponent,
+        RouterLink
     ],
     templateUrl: './vehicles.component.html'
 })

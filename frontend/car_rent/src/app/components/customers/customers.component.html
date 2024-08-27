@@ -54,9 +54,15 @@
                     <td class="td-style">{{ customer.phone }}</td>
                     <td class="td-style">
                         <div class="flex space-x-2">
-                            <button class="btn-actions bg-teal-600 hover:bg-teal-600 focus:bg-teal-600"> <fa-icon [icon]="['fas', 'eye']" title="Visualizar"/> </button>
-                            <button class="btn-actions bg-yellow-600"> <fa-icon [icon]="['fas', 'edit']" title="Editar" /> </button>
-                            <button class="btn-actions bg-red-600"> <fa-icon [icon]="['fas', 'trash']" title="Deletar"/> </button>
+                            <button [routerLink]="['/customer', customer.id]" class="btn-actions bg-teal-600">
+                                <fa-icon [icon]="['fas', 'eye']" title="Visualizar"></fa-icon>
+                            </button>
+                            <button [routerLink]="['/customer', customer.id, 'edit']" class="btn-actions bg-yellow-600">
+                                <fa-icon [icon]="['fas', 'edit']" title="Editar"></fa-icon>
+                            </button>
+                            <button class="btn-actions bg-red-600">
+                                <fa-icon [icon]="['fas', 'trash']" title="Deletar"></fa-icon>
+                            </button>
                         </div>
                     </td>
                 </tr>
