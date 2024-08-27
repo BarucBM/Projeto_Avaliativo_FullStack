@@ -17,8 +17,8 @@ import {filter} from "rxjs";
 })
 export class NavbarComponent {
   currentRoute: string = '';
-  activeClass: string = "text-indigo-400 border-b-2 border-indigo-700 transform transition duration-500 ease-in-out";
-  inactiveClass: string = "text-indigo-900 hover:text-indigo-600 hover:border-b-2 hover:border-indigo-900 hover:transform transition duration-700";
+  activeClass: string = "text-indigo-700 border-b-2 border-indigo-700 transform transition duration-500 ease-in-out";
+  inactiveClass: string = "text-indigo-900 hover:text-indigo-700 hover:border-b-2 hover:border-indigo-900 hover:transform transition duration-700";
 
   constructor(private router: Router) {
   }

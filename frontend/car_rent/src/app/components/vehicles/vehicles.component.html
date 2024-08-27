@@ -1,91 +1,110 @@
 <div class="mt-6">
-    <h2 class="text-xl font-semibold leading-tight text-gray-700">Veículos</h2>
-
-    <div class="flex flex-col mt-3 sm:flex-row">
-        <div class="flex">
-            <div class="relative">
-                <select class="select-style border rounded-l">
-                    <option>5</option>
-                    <option>10</option>
-                    <option>20</option>
-                </select>
-
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                        <fa-icon [icon]="['fas', 'angle-down']" size="sm"
-                                 class="mb-2 w-4 h-4 text-gray-800 fill-current"/>
-                    </div>
-                </div>
-            </div>
-
-            <div class="relative">
-                <select class="select-style border">
-                    <option>Todos</option>
-                    <option>Disponíveis</option>
-                    <option>Alugados</option>
-                </select>
-
-                <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                    <fa-icon [icon]="['fas', 'angle-down']" size="sm" class="mb-2 fill-current w-4 h-4 text-gray-800"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="relative block mt-2 sm:mt-0">
-            <div class="relative text-indigo-600 flex items-center w-full lg:w-2/3">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                        <fa-icon [icon]="['fas', 'search']" size="lg" class="text-gray-400 rounded-r"/>
-                    </span>
-                <input class="input-style" type="text" placeholder="Buscar"/>
-            </div>
-        </div>
-        <button class="btn-primary ml-auto"> Novo Veículo</button>
-    </div>
+    <h1 class="title">Veículos</h1>
 
     <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
         <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
+
+            <div class="mb-4 flex justify-end">
+                <button class="btn-primary">
+                    Novo Veículo
+                </button>
+            </div>
 
             <table class="min-w-full leading-normal">
                 <thead>
                 <tr>
                     <th class="rent-th">Imagem</th>
-                    <th class="rent-th">Tipo</th>
-                    <th class="rent-th">Marca</th>
-                    <th class="rent-th">Modelo</th>
-                    <th class="rent-th">Ano</th>
-                    <!-- <th class="rent-th">Placa</th> -->
-                    <!-- <th class="rent-th">Alugado</th> -->
+                    <th class="rent-th">
+                        Marca
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos"><div class="input-after-caret"></div>
+                        </div>
+                    </th>
+                    <th class="rent-th">
+                        Cor
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos"><div class="input-after-caret"></div>
+                        </div>
+                    </th>
+                    <th class="rent-th">
+                        Placa
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos"><div class="input-after-caret"></div>
+                        </div>
+                    </th>
+                    <th class="rent-th">
+                        Modelo
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos"><div class="input-after-caret"></div>
+                        </div>
+                    </th>
+                    <th class="rent-th">
+                        Ano
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos"><div class="input-after-caret"></div>
+                        </div>
+                    </th>
+                    <th class="rent-th" style="width:130px; column-span: 2">
+                        Tipo
+                        <div class="relative">
+                            <select class="select-style mt-1 border rounded">
+                                <option value="">Todos</option>
+                                <option *ngFor="let option of carTypes" [value]="option.value">
+                                    {{ option.label }}
+                                </option>
+                            </select>
+                            <div class="input-after-caret">
+                                <fa-icon [icon]="['fas', 'angle-down']" size="sm" class="mb-2 fill-current w-4 h-4 text-gray-800"/>
+                            </div>
+                        </div>
+                    </th>
+
+                    <th class="rent-th">
+                        Status
+                        <div class="relative">
+                            <select class="select-style">
+                                <option value="">Todos</option>
+                                <option *ngFor="let option of isRent" [value]="option.value">
+                                    {{ option.label }}
+                                </option>
+                            </select>
+                            <div class="input-after-caret">
+                                <fa-icon [icon]="['fas', 'angle-down']" size="sm" class="mb-2 fill-current w-4 h-4 text-gray-800"/>
+                            </div>
+                        </div>
+                    </th>
+                    <th class="rent-th">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 w-40 h-40">
-                                <img class="w-full h-full rounded-full" src="images/logo.png" alt="profile pic"/>
-                            </div>
+                <tr *ngFor="let vehicle of vehicles">
+                    <td class="td-style">
+                        <div class="flex-shrink-0 w-20 h-20"><img class="w-full h-full rounded-md" src="images/logo.png" alt="Imagem Veículo"></div>
+                    </td>
+                    <td class="td-style">{{ vehicle.brand }}</td>
+                    <td class="td-style">{{ vehicle.color }}</td>
+                    <td class="td-style">{{ vehicle.licensePlate }}</td>
+                    <td class="td-style">{{ vehicle.model }}</td>
+                    <td class="td-style">{{ vehicle.year }}</td>
+                    <td class="td-style">{{ vehicle.type }}</td>
+                    <td class="td-style">
+                        <span class="relative inline-block px-3 py-1 font-semibold text-${vehicle.statusColor}-900 leading-tight">
+                            <span aria-hidden="true" class="absolute inset-0 bg-${vehicle.statusColor}-200 opacity-50 rounded-full"></span>
+                            <span class="relative p-1 rounded {{ vehicle.rented ? 'bg-red-200 text-red-900' : 'bg-green-200 text-green-900' }}">
+                                {{ vehicle.rented ? 'Alugado' : 'Disponível' }}
+                            </span>
+                        </span>
+                    </td>
+                    <td class="td-style">
+                        <div class="flex space-x-2">
+                            <button class="btn-actions bg-teal-600 hover:bg-teal-600 focus:bg-teal-600"> <fa-icon [icon]="['fas', 'eye']" title="Visualizar"/> </button>
+                            <button class="btn-actions bg-yellow-600"> <fa-icon [icon]="['fas', 'edit']" title="Editar" /> </button>
+                            <button class="btn-actions bg-red-600"> <fa-icon [icon]="['fas', 'trash']" title="Deletar"/> </button>
                         </div>
-                    </td>
-                    <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p class="text-gray-900 whitespace-nowrap text-lg">{{ vehicle.type }}</p>
-                    </td>
-                    <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p class="text-gray-900 whitespace-nowrap">{{ vehicle.brand }}</p>
-                    </td>
-                    <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                        <p class="text-gray-900 whitespace-nowrap">{{ vehicle.model }}</p>
-                    </td>
-                    <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                <span class="relative inline-block px-3 py-1 font-semibold text-${u.statusColor}-900 leading-tight">
-                    <span aria-hidden="true"
-                          class="absolute inset-0 bg-${u.statusColor}-200 opacity-50 rounded-full"></span>
-                    <span class="relative">{{ vehicle.year }}</span>
-                </span>
                     </td>
                 </tr>
                 </tbody>
             </table>
-
 
             <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">
                 <span class="text-xs text-gray-900 xs:text-sm">Mostrando 1 de 4 total 50</span>

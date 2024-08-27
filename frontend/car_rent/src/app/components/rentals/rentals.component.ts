@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-rentals',
   standalone: true,
   imports: [],
-  templateUrl: './rentals.component.html',
-  styleUrl: './rentals.component.sass'
+  templateUrl: './rentals.component.html'
 })
 export class RentalsComponent {
 

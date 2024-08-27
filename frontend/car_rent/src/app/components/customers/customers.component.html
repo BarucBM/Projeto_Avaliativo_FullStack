@@ -1,0 +1,82 @@
+<div class="mt-6">
+    <h1 class="title">Clientes</h1>
+
+    <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
+        <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
+
+            <div class="mb-4 flex justify-end">
+                <button class="btn-primary">
+                    Novo Cliente
+                </button>
+            </div>
+
+            <table class="min-w-full leading-normal">
+                <thead>
+                <tr>
+                    <th class="rent-th">
+                        Nome
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
+                                   [(ngModel)]="filters.name">
+                            <div class="input-after-caret"></div>
+                        </div>
+                    </th>
+                    <th class="rent-th">
+                        CPF
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
+                                   [(ngModel)]="filters.cpf">
+                            <div class="input-after-caret"></div>
+                        </div>
+                    </th>
+                    <th class="rent-th">
+                        Email
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
+                                   [(ngModel)]="filters.email">
+                            <div class="input-after-caret"></div>
+                        </div>
+                    </th>
+                    <th class="rent-th">
+                        Telefone
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
+                                   [(ngModel)]="filters.phone">
+                            <div class="input-after-caret"></div>
+                        </div>
+                    </th>
+                    <th class="rent-th">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let customer of filteredCustomers">
+                    <td class="td-style">{{ customer.name }}</td>
+                    <td class="td-style">{{ customer.cpf }}</td>
+                    <td class="td-style">{{ customer.email }}</td>
+                    <td class="td-style">{{ customer.phone }}</td>
+                    <td class="td-style">
+                        <div class="flex space-x-2">
+                            <button class="btn-actions bg-teal-600 hover:bg-teal-600 focus:bg-teal-600"> <fa-icon [icon]="['fas', 'eye']" title="Visualizar"/> </button>
+                            <button class="btn-actions bg-yellow-600"> <fa-icon [icon]="['fas', 'edit']" title="Editar" /> </button>
+                            <button class="btn-actions bg-red-600"> <fa-icon [icon]="['fas', 'trash']" title="Deletar"/> </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">
+                <span class="text-xs text-gray-900 xs:text-sm">Mostrando 1 de 2 total 2</span>
+                <div class="inline-flex mt-2 xs:mt-0">
+                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400">
+                        Anterior
+                    </button>
+                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-r hover:bg-gray-400">
+                        Próximo
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

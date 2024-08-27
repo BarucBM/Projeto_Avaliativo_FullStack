@@ -4,30 +4,31 @@ import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {NavbarComponent} from "./components/navbar/navbar.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {NewUserComponent} from "./components/user/new-user/new-user.component";
 import {HeaderComponent} from "./components/header/header.component";
 import {LoginComponent} from "./components/login/login.component";
 import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {VehiclesComponent} from "./components/vehicles/vehicles.component";
+import {CustomersComponent} from "./components/customers/customers.component";
+import {ShowVehicleComponent} from "./components/vehicles/show-vehicle/show-vehicle.component";
 
 @Component({
     selector: 'root',
     standalone: true,
     imports: [
-        VehiclesComponent,
+        CustomersComponent,
         DashboardComponent,
         FaIconComponent,
+        FormsModule,
         HeaderComponent,
         LoginComponent,
         NavbarComponent,
-        NewUserComponent,
-        FormsModule,
+        NgIf,
         RouterOutlet,
-        NgIf
+        ShowVehicleComponent,
+        VehiclesComponent
     ],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.sass'
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
     showHeader: boolean = true;
