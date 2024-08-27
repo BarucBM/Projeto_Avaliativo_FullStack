@@ -10,7 +10,7 @@
         @apply bg-red-300
 
     .input-style
-        @apply pl-10 pr-4 py-2 w-full bg-white border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent
+        @apply pl-10 pr-4 py-2 w-full bg-white border border-gray-400 rounded-r shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent
 
 .container-hero-nav
     @apply fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0
@@ -29,3 +29,12 @@ fa-icon
         @apply p-3 bg-opacity-75 rounded-full
         & > fa-icon
             @apply text-slate-900
+
+.btn-primary
+    @apply mt-2 sm:mt-0 px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500
+
+.rent-th
+    @apply px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200
+
+.select-style
+    @apply block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500
