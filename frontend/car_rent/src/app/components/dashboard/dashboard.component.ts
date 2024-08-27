@@ -6,6 +6,7 @@ import {HeaderComponent} from "../header/header.component";
 import {CustomersComponent} from "../customers/customers.component";
 import {VehiclesComponent} from "../vehicles/vehicles.component";
 import {RentalsComponent} from "../rentals/rentals.component";
+import {ApiService} from "../../services/api.service";
 
 @Component({
     selector: 'rent-dashboard',
@@ -22,4 +23,16 @@ import {RentalsComponent} from "../rentals/rentals.component";
     templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent {
+    vehicleCount!: number;
+    availableVehicleCount!: number;
+    customerCount!: number;
+    rentalCount!: number;
+
+    ngOnInit(): void {
+        console.log('DashboardComponent initialized');
+        this.vehicleCount = 100;
+        this.customerCount = 34;
+        this.rentalCount= 27;
+        this.availableVehicleCount= 73;
+    }
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 
 @Injectable({
@@ -12,19 +12,19 @@ export class ApiService {
 
     getVehicles(): Observable<number> {
         return this.http.get<any[]>(`${this.baseUrl}/vehicle`).pipe(
-            map(vehicles => vehicles.length)
+            map((vehicles) => vehicles.length)
         );
     }
 
     getCustomers(): Observable<number> {
         return this.http.get<any[]>(`${this.baseUrl}/customer`).pipe(
-            map(customers => customers.length)
+            map((customers) => customers.length)
         );
     }
 
     getRentals(): Observable<number> {
         return this.http.get<any[]>(`${this.baseUrl}/rental`).pipe(
-            map(rentals => rentals.length)
+            map((rentals) => rentals.length)
         );
     }
 }

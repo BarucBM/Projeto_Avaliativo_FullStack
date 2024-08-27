@@ -1,13 +1,15 @@
 import {provideRouter, Routes} from '@angular/router';
-import {NewUserComponent} from "./components/user/new-user/new-user.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {ShowUserComponent} from "./components/user/show-user/show-user.component";
 import {LoginComponent} from "./components/login/login.component";
+import {EnvironmentProviders} from "@angular/core";
+import {CustomersComponent} from "./components/customers/customers.component";
+import {VehiclesComponent} from "./components/vehicles/vehicles.component";
 
 export const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'user/new-user', component: NewUserComponent },
-    { path: 'user/show-user', component: ShowUserComponent },
+    { path: 'customers', component: CustomersComponent },
+    { path: 'vehicles', component: VehiclesComponent },
 ];
+export const routing: EnvironmentProviders = provideRouter(routes);

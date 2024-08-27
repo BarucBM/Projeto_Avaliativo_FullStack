@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-vehicles',
+  selector: 'rent-vehicles',
   standalone: true,
   imports: [],
-  templateUrl: './vehicles.component.html',
-  styleUrl: './vehicles.component.sass'
+  templateUrl: './vehicles.component.html'
 })
 export class VehiclesComponent {
 

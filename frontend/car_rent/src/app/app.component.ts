@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {NavbarComponent} from "./components/navbar/navbar.component";
@@ -9,11 +9,13 @@ import {HeaderComponent} from "./components/header/header.component";
 import {LoginComponent} from "./components/login/login.component";
 import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
+import {VehiclesComponent} from "./components/vehicles/vehicles.component";
 
 @Component({
     selector: 'root',
     standalone: true,
     imports: [
+        VehiclesComponent,
         DashboardComponent,
         FaIconComponent,
         HeaderComponent,
