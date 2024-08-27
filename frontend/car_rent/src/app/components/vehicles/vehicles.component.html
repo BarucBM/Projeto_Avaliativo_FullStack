@@ -5,9 +5,7 @@
         <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
 
             <div class="mb-4 flex justify-end">
-                <button class="btn-primary">
-                    Novo Veículo
-                </button>
+                <button class="btn-primary" (click)="redirectToNewVehicle()">Novo Veículo</button>
             </div>
 
             <table class="min-w-full leading-normal">
@@ -79,14 +77,18 @@
                 <tbody>
                 <tr *ngFor="let vehicle of vehicles">
                     <td class="td-style">
-                        <div class="flex-shrink-0 w-20 h-20"><img class="w-full h-full rounded-md" src="images/logo.png" alt="Imagem Veículo"></div>
+                        <div class="flex-shrink-0 w-20 h-20">
+                            <img class="w-full h-full rounded-md" src="images/logo.png" alt="Imagem Veículo">
+                        </div>
                     </td>
                     <td class="td-style">{{ vehicle.brand }}</td>
                     <td class="td-style">{{ vehicle.color }}</td>
                     <td class="td-style">{{ vehicle.licensePlate }}</td>
                     <td class="td-style">{{ vehicle.model }}</td>
                     <td class="td-style">{{ vehicle.year }}</td>
-                    <td class="td-style">{{ vehicle.type }}</td>
+                    <td class="td-style text-center text-slate-950">
+                        <fa-icon [icon]="['fas', vehicle.type.toLowerCase() === 'van' ? 'van-shuttle' : vehicle.type.toLowerCase()]"></fa-icon>
+                    </td>
                     <td class="td-style">
                         <span class="relative inline-block px-3 py-1 font-semibold text-${vehicle.statusColor}-900 leading-tight">
                             <span aria-hidden="true" class="absolute inset-0 bg-${vehicle.statusColor}-200 opacity-50 rounded-full"></span>

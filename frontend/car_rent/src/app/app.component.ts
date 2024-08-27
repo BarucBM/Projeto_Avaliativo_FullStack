@@ -11,6 +11,7 @@ import {NgIf} from "@angular/common";
 import {VehiclesComponent} from "./components/vehicles/vehicles.component";
 import {CustomersComponent} from "./components/customers/customers.component";
 import {ShowVehicleComponent} from "./components/vehicles/show-vehicle/show-vehicle.component";
+import {FormComponent} from "./components/vehicles/form/form.component";
 
 @Component({
     selector: 'root',
@@ -19,6 +20,7 @@ import {ShowVehicleComponent} from "./components/vehicles/show-vehicle/show-vehi
         CustomersComponent,
         DashboardComponent,
         FaIconComponent,
+        FormComponent,
         FormsModule,
         HeaderComponent,
         LoginComponent,

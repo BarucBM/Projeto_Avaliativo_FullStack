@@ -8,7 +8,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
     templateUrl: './form.component.html'
 })
 export class FormComponent implements OnInit {
-    @Input() formData: any;
+    ngOnInit(): void {
+    }
+ /*   @Input() formData?: any;
     @Output() submitForm = new EventEmitter<any>();
 
     formGroup: FormGroup;
@@ -30,6 +32,6 @@ export class FormComponent implements OnInit {
     }
 
     onCreate($event: any) {
-        
-    }
+
+    }*/
 }

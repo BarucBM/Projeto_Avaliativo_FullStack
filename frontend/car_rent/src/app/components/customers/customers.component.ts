@@ -3,6 +3,7 @@ import {CustomerModel} from "../../models/customer.model";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-customers',
@@ -11,6 +12,13 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
     templateUrl: './customers.component.html'
 })
 export class CustomersComponent {
+
+    constructor(private router: Router) {}
+
+    redirectToNewCustomer() {
+        this.router.navigate(['/customer/new']).then(r => r);
+    }
+
     customers: CustomerModel[] = [
         {id: 1, cpf: '123.456.789-01', email: 'saitama@mail.com', name: 'Saitama', phone: '555-1234'},
         {id: 1, cpf: '123.456.423-02', email: 'goku@mail.com', name: 'Goku', phone: '255-1234'},
