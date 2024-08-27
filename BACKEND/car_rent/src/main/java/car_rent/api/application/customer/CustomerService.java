@@ -34,12 +34,12 @@ public class CustomerService {
     }
 
     @Transactional
-    protected CustomerModel addCustomer (CustomerModel customer){
+    public CustomerModel addCustomer (CustomerModel customer){
         return customerRepository.save(customer);
     }
 
     @Transactional
-    protected CustomerModel updateCustomer (Long id, CustomerDto customerDto){
+    public CustomerModel updateCustomer (Long id, CustomerDto customerDto){
         CustomerModel customer = customerRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(Messages.notFount("Cliente")));
 
@@ -50,14 +50,13 @@ public class CustomerService {
     }
 
     @Transactional
-    protected CustomerModel deleteCustomer(Long id){
+    public CustomerModel deleteCustomer(Long id){
         CustomerModel customer = customerRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(Messages.notFount("Cliente")));
         customerRepository.delete(customer);
         return customer;
     }
 
-    @Transactional
     public long getCountCustomer(){
         return customerRepository.count();
     }

@@ -50,7 +50,7 @@ public class RentalService {
     }
 
     @Transactional
-    protected RentalModel updateRental(Long id, RentalDto rentalDto) {
+    public RentalModel updateRental(Long id, RentalDto rentalDto) {
         RentalModel rental = findRentalById(id);
         BeanUtils.copyProperties(rentalDto, rental);
 
@@ -58,7 +58,7 @@ public class RentalService {
     }
 
     @Transactional
-    protected void destroyRental(Long id) {
+    public void destroyRental(Long id) {
         RentalModel rental = findRentalById(id);
         VehicleModel vehicle = rental.getVehicle();
 
@@ -77,7 +77,7 @@ public class RentalService {
     }
 
     @Transactional
-    protected RentalModel save(RentalModel rental) {
+    public RentalModel save(RentalModel rental) {
         validate(rental);
         return rentalRepository.save(rental);
     }
@@ -126,7 +126,6 @@ public class RentalService {
         return convertToDto(savedRental);
     }
 
-    @Transactional
     public long getCountRental(){
         return rentalRepository.count();
     }

@@ -42,14 +42,14 @@ public class VehicleService {
         return vehicleRepository.findAll(spec, pageable);
     }
 
-    protected VehicleModel getVehicleByID(Long id){
+    protected VehicleModel getVehicleByID(Long id) {
 
         return vehicleRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(Messages.notFount("Veículo")));
     }
 
     @Transactional
-    protected VehicleModel addVehicles (VehicleModel vehicle){
+    public VehicleModel addVehicles(VehicleModel vehicle) {
         return vehicleRepository.save(vehicle);
     }
 
@@ -69,17 +69,14 @@ public class VehicleService {
     }
 
     @Transactional
-    protected VehicleModel deleteVehicle(Long id){
+    public VehicleModel deleteVehicle(Long id) {
         VehicleModel vehicle = vehicleRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(Messages.notFount("Veículo")));
         vehicleRepository.delete(vehicle);
         return vehicle;
     }
 
-    @Transactional
-    public long getCountVehicle(){
+    public long getCountVehicle() {
         return vehicleRepository.count();
     }
-
-
 }
