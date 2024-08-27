@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {CommonModule} from "@angular/common";
-import {VehicleModel} from "../../models/vehicle.model";
 import {Router, RouterLink} from "@angular/router";
+import {VehicleService} from "../../services/vehicle.service";
 
 @Component({
     selector: 'vehicles',
@@ -14,32 +14,27 @@ import {Router, RouterLink} from "@angular/router";
     ],
     templateUrl: './vehicles.component.html'
 })
-export class VehiclesComponent {
+export class VehiclesComponent implements OnInit {
+    vehicles: any[] = [];
+    vehicleCount: number = 0;
 
-    constructor(private router: Router) {}
+    constructor(private vehicleService: VehicleService) {}
 
-    redirectToNewVehicle() {
-        this.router.navigate(['/vehicle/new']).then(r => r);
+    ngOnInit(): void {
+        this.getVehicles();
+        this.vehiclesCount();
+        console.log(this)
     }
 
-    vehicles: VehicleModel[] = [
-        { id: 1, brand: 'BMW', color: 'Preto', licensePlate: 'ABC-1234', model: 'X6', rented: false, type: 'CAR', year: 2024 },
-        { id: 2, brand: 'Honda', color: 'Vermelho', licensePlate: 'XYZ-5678', model: 'Civic', rented: true, type: 'CAR', year: 2023 },
-        { id: 3, brand: 'Yamaha', color: 'Azul', licensePlate: 'MNO-9101', model: 'YZF-R3', rented: false, type: 'MOTORCYCLE', year: 2022 },
-        { id: 4, brand: 'Mercedes-Benz', color: 'Branco', licensePlate: 'JKL-2345', model: 'Sprinter', rented: true, type: 'VAN', year: 2023 },
-        { id: 5, brand: 'Volvo', color: 'Cinza', licensePlate: 'PQR-6789', model: 'FH16', rented: false, type: 'TRUCK', year: 2024 },
-        { id: 6, brand: 'BMW', color: 'Preto', licensePlate: 'ABC-5678', model: 'X5', rented: true, type: 'CAR', year: 2021 }
-    ];
+    getVehicles(): void {
+        this.vehicleService.getAll().subscribe(vehicles => {
+            this.vehicles = vehicles;
+        });
+    }
 
-    carTypes = [
-        { value: 'CAR', label: 'Carro' },
-        { value: 'MOTORCYCLE', label: 'Motocicleta' },
-        { value: 'TRUCK', label: 'Caminhão' },
-        { value: 'VAN', label: 'Van' }
-    ];
-
-    isRent = [
-        { value: true, label: 'Alugado' },
-        { value: false, label: 'Disponível' },
-    ]
+    vehiclesCount(): void {
+        this.vehicleService.count().subscribe(count => {
+            this.vehicleCount = count;
+        });
+    }
 }

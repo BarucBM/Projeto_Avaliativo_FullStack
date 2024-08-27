@@ -1,30 +1,37 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-    providedIn: 'root'
-})
-export class ApiService {
-    private baseUrl: string = 'http://localhost:8080';
+export abstract class ApiService {
+    private readonly baseUrl: string = 'http://localhost:8080';
 
-    constructor(private http: HttpClient) {}
+    protected constructor(protected http: HttpClient) {}
+    protected abstract get path(): string;
 
-    getVehicles(): Observable<number> {
-        return this.http.get<any[]>(`${this.baseUrl}/vehicle`).pipe(
-            map((vehicles) => vehicles.length)
-        );
+    private url(): string {
+        return `${this.baseUrl}/${this.path}`;
     }
 
-    getCustomers(): Observable<number> {
-        return this.http.get<any[]>(`${this.baseUrl}/customer`).pipe(
-            map((customers) => customers.length)
-        );
+    count(): Observable<number> {
+        return this.http.get<number>(`${this.url()}/count`);
     }
 
-    getRentals(): Observable<number> {
-        return this.http.get<any[]>(`${this.baseUrl}/rental`).pipe(
-            map((rentals) => rentals.length)
-        );
+    getAll(): Observable<any[]> {
+        return this.http.get<any[]>(this.url());
+    }
+
+    getById(id: number): Observable<any> {
+        return this.http.get<any>(`${this.url()}/${id}`);
+    }
+
+    create(item: any): Observable<any> {
+        return this.http.post<any>(this.url(), item);
+    }
+
+    update(id: number, item: any): Observable<any> {
+        return this.http.put<any>(`${this.url()}/${id}`, item);
+    }
+
+    delete(id: number): Observable<any> {
+        return this.http.delete<any>(`${this.url()}/${id}`);
     }
 }
