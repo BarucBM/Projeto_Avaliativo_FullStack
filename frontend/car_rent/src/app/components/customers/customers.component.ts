@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { Router, RouterLink } from '@angular/router';
 import {CustomerService} from "../../services/customer.service";
+import {emitDistinctChangesOnlyDefaultValue} from "@angular/compiler";
 
 @Component({
     selector: 'app-customers',
@@ -13,34 +14,78 @@ import {CustomerService} from "../../services/customer.service";
     templateUrl: './customers.component.html'
 })
 export class CustomersComponent implements OnInit {
-
     customers: CustomerModel[] | any = [];
+    customerCount: number = 0;
+    totalCustomers: number = 0;
+    page: number = 0;
+    customerPerPage: number = 2;
+    qntPage: number = 0;
     filteredCustomers: CustomerModel[] = [];
-    filters = { name: '', cpf: '', email: '', phone: '', image_url: '' };
+    filterName: string = '';
+    filterCpf: string = '';
+    filterEmail: string = '';
+    filterPhone: string = '';
 
     constructor(private customerService: CustomerService, private router: Router) {}
 
     ngOnInit(): void {
-        this.customerService.getAll().subscribe({
-            next: (customers) => {
-                console.log('Clientes:', customers);
-                this.customers = customers;
-                this.filteredCustomers = [...this.customers];
-            }, error: (err) => console.error('Erro:', err)
-        });
+        this.filterCustomers();
+        this.calculatePages()
     }
 
     redirectToNewCustomer(): void {
-        this.router.navigate(['/customer/new']).then(r => r);
+        this.router.navigate(['/customers/new']).then(r => r);
     }
 
     filterCustomers(): void {
-        this.filteredCustomers = this.customers.filter((customer: CustomerModel) =>
-            customer.name.toLowerCase().includes(this.filters.name.toLowerCase()) ||
-            customer.cpf.includes(this.filters.cpf) ||
-            customer.email.toLowerCase().includes(this.filters.email.toLowerCase()) ||
-            customer.phone.includes(this.filters.phone) ||
-            customer.phone.includes(this.filters.image_url)
-        );
+        const filters : { [key: string]: any }= {
+            name: this.filterName,
+            cpf: this.filterCpf,
+            email: this.filterEmail,
+            phone: this.filterPhone,
+            page: this.page,
+            size: this.customerPerPage
+        };
+        let usedFilters : { [key: string]: any } = {};
+
+        Object.keys(filters).forEach(key => {
+            if(filters[key] !== '' && filters[key] !== 0 && filters[key] !== null){
+                usedFilters[key] = filters[key];
+            }
+        });
+
+        this.customerService.getAll(usedFilters).subscribe(customers => {
+            this.customers = customers;
+            this.customerCount = customers.length;
+            this.filteredCustomers = customers;
+        });
     }
+
+    calculatePages(){
+        this.customerService.count().subscribe(vehicles => {
+            this.totalCustomers = vehicles
+            this.qntPage = Math.ceil( this.totalCustomers/this.customerPerPage)
+        })
+    }
+
+    setPage(page: number): void {
+        this.page = page;
+        this.filterCustomers();
+    }
+
+    nextPage(): void {
+        if (this.page < this.qntPage) {
+            this.page++;
+            this.filterCustomers();
+        }
+    }
+
+    previousPage(): void {
+        if (this.page > 1) {
+            this.page--;
+            this.filterCustomers();
+        }
+    }
+
+    protected readonly emitDistinctChangesOnlyDefaultValue = emitDistinctChangesOnlyDefaultValue;
 }

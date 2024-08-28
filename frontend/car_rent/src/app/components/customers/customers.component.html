@@ -14,40 +14,32 @@
                     <th class="rent-th">
                         Nome
                         <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
-                                   [(ngModel)]="filters.name">
+                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterName"
+                                   (input)="filterCustomers()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
                     <th class="rent-th">
                         CPF
                         <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
-                                   [(ngModel)]="filters.cpf">
+                            <input type="text" class="select-style" placeholder="Todos"  [(ngModel)]="filterCpf"
+                                   (input)="filterCustomers()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
                     <th class="rent-th">
                         Email
                         <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
-                                   [(ngModel)]="filters.email">
+                            <input type="text" class="select-style" placeholder="Todos"  [(ngModel)]="filterEmail"
+                                   (input)="filterCustomers()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
                     <th class="rent-th">
                         Telefone
                         <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
-                                   [(ngModel)]="filters.phone">
-                            <div class="input-after-caret"></div>
-                        </div>
-                    </th>
-                    <th class="rent-th">
-                        Imagem
-                        <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
-                                   [(ngModel)]="filters.image_url">
+                            <input type="text" class="select-style" placeholder="Todos"  [(ngModel)]="filterPhone"
+                                   (input)="filterCustomers()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
@@ -78,12 +70,35 @@
             </table>
 
             <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">
-                <span class="text-xs text-gray-900 xs:text-sm">Mostrando {{ filteredCustomers.length }} de {{ customers.length }} total</span>
+                <span class="text-xs text-gray-900 xs:text-sm">{{ totalCustomers }} Clientes</span>
                 <div class="inline-flex mt-2 xs:mt-0">
-                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400">
+                    <button
+                            class="btn-pagination text-white bg-slate-700 rounded-l"
+                            (click)="previousPage()"
+                            [disabled]="page === 1"
+                            [class.bg-slate-300]="page === 1"
+                            [class.cursor-not-allowed]="page === 1"
+                            [class.bg-slate-700]="page !== 1">
                         Anterior
                     </button>
-                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-r hover:bg-gray-400">
+                    <ng-container *ngFor="let p of [].constructor(qntPage); let i = index">
+                        <button
+                                class="btn-pagination border text-slate-900"
+                                [class.bg-slate-400]="page !== i + 1"
+                                [class.bg-slate-500]="page === i + 1"
+                                [class.cursor-not-allowed]="page === i + 1"
+                                [class.text-white]="page === i + 1"
+                                (click)="setPage(i + 1)">
+                            {{ i + 1 }}
+                        </button>
+                    </ng-container>
+                    <button
+                            class="btn-pagination text-white bg-sta-600 rounded-r"
+                            (click)="nextPage()"
+                            [disabled]="page === qntPage"
+                            [class.bg-slate-300]="page === qntPage"
+                            [class.cursor-not-allowed]="page === qntPage"
+                            [class.bg-slate-700]="page !== qntPage">
                         Próximo
                     </button>
                 </div>

@@ -8,6 +8,7 @@ import {ShowVehicleComponent} from "./components/vehicles/show-vehicle/show-vehi
 import {EditVehicleComponent} from "./components/vehicles/edit-vehicle/edit-vehicle.component";
 import { ShowCustomerComponent } from './components/customers/show-customer/show-customer.component';
 import { EditCustomerComponent } from './components/customers/edit-customer/edit-customer.component';
+import {NewCustomerComponent} from "./components/customers/new-customer/new-customer.component";
 
 export let routes: Routes;
 routes = [
@@ -16,6 +17,7 @@ routes = [
     {path: 'login', component: LoginComponent},
     {path: 'customers', component: CustomersComponent},
     {path: 'customer/:id', component: ShowCustomerComponent},
+    {path: 'customers/new', component: NewCustomerComponent},
     {path: 'customer/:id/edit', component: EditCustomerComponent},
     {path: 'vehicles', component: VehiclesComponent},
     {path: 'vehicle/new', component: NewVehicleComponent},

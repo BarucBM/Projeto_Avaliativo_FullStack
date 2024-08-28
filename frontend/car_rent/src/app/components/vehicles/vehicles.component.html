@@ -137,7 +137,7 @@
                 <span class="text-xs text-gray-900 xs:text-sm">{{ totalVehicles }} veículos</span>
                 <div class="inline-flex mt-2 xs:mt-0">
                     <button
-                            class="btn-pagination text-white bg-slate-700 rounded-l"
+                            class="btn-pagination text-white bg-slate-700"
                             (click)="previousPage()"
                             [disabled]="page === 1"
                             [class.bg-slate-300]="page === 1"
@@ -157,13 +157,13 @@
                         </button>
                     </ng-container>
                     <button
-                            class="btn-pagination text-white bg-sta-600 rounded-r"
+                            class="btn-pagination text-white bg-sta-600"
                             (click)="nextPage()"
                             [disabled]="page === qntPage"
                             [class.bg-slate-300]="page === qntPage"
                             [class.cursor-not-allowed]="page === qntPage"
                             [class.bg-slate-700]="page !== qntPage">
-                        Next
+                        Próximo
                     </button>
                 </div>
             </div>

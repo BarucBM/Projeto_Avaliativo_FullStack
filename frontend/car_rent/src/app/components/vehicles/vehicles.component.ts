@@ -69,7 +69,6 @@ export class VehiclesComponent implements OnInit {
         Object.keys(filters).forEach(key => {
             if(filters[key] !== '' && filters[key] !== 0 && filters[key] !== null){
                 usedFilters[key] = filters[key]
-
             }
 
         })

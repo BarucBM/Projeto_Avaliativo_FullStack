@@ -5,9 +5,9 @@
 
     <div class="flex items-center">
         <div class="relative">
-            <button (click)="toggleDropdown()" class="focus:outline-none items-center">
+            <i (click)="toggleDropdown()" class="focus:outline-none items-center">
                 <img class="w-8 h-8 rounded-full" src="images/avatar.png" alt="Avatar"/>
-            </button>
+            </i>
 
             <div *ngIf="dropdownOpen" class="fixed inset-0 z-10" (click)="closeDropdown()"></div>
 

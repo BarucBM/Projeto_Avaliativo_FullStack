@@ -12,6 +12,7 @@ import {VehiclesComponent} from "./components/vehicles/vehicles.component";
 import {CustomersComponent} from "./components/customers/customers.component";
 import {NewVehicleComponent} from "./components/vehicles/new-vehicle/new-vehicle.component";
 import {ShowVehicleComponent} from "./components/vehicles/show-vehicle/show-vehicle.component";
+import {NewCustomerComponent} from "./components/customers/new-customer/new-customer.component";
 
 @Component({
     selector: 'root',
@@ -25,6 +26,7 @@ import {ShowVehicleComponent} from "./components/vehicles/show-vehicle/show-vehi
         LoginComponent,
         NavbarComponent,
         NewVehicleComponent,
+        NewCustomerComponent,
         ShowVehicleComponent,
         NgIf,
         RouterOutlet,

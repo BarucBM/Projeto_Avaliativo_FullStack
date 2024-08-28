@@ -3,6 +3,7 @@ import {ApiService} from "./api.service";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import { CustomerModel } from "../models/customer.model";
 import { Injectable } from "@angular/core";
+import {VehicleModel} from "../models/vehicle.model";
 
 
 @Injectable({
