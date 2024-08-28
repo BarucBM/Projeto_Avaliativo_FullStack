@@ -10,6 +10,4 @@ import java.util.Optional;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerModel, Long>, PagingAndSortingRepository<CustomerModel, Long>, JpaSpecificationExecutor<CustomerModel> {
-    Optional<CustomerModel> findById(Long id);
-
 }

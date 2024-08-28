@@ -27,7 +27,6 @@ public class VehicleController {
 
     @Autowired
     private VehicleService vehicleService;
-
     @Autowired
     private RentalService rentalService;
 
@@ -51,13 +50,25 @@ public class VehicleController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<VehicleModel> getVehicleById (@PathVariable(value = "id") Long id){
+    public ResponseEntity<VehicleModel> getVehicleById(@PathVariable(value = "id") long id){
         return ResponseEntity.status(HttpStatus.OK).body(vehicleService.getVehicleByID(id));
     }
 
     @GetMapping(path = "/count")
     public ResponseEntity<Long> getCountVehicle (){
         return ResponseEntity.status(HttpStatus.OK).body(vehicleService.getCountVehicle());
+    }
+
+    @GetMapping("/rented/count")
+    public ResponseEntity<Long> countRentedVehicles() {
+        long rentedCount = vehicleService.countVehiclesByStatus(true);
+        return new ResponseEntity<>(rentedCount, HttpStatus.OK);
+    }
+
+    @GetMapping("/available/count")
+    public ResponseEntity<Long> countAvailableVehicles() {
+        long availableCount = vehicleService.countVehiclesByStatus(false);
+        return new ResponseEntity<>(availableCount, HttpStatus.OK);
     }
 
     @PostMapping

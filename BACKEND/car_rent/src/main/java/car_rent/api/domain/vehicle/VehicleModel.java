@@ -25,6 +25,7 @@ public class VehicleModel {
     private VehicleType type = VehicleType.CAR;
 
     private String color;
+    private String image_url;
 
     @NotNull(message = "Ano é obrigatório.")
     @Positive(message = "O ano deve ser um número positivo.")

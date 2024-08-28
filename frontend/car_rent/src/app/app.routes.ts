@@ -24,4 +24,3 @@ export const routes: Routes = [
     { path: 'vehicle/new', component: NewVehicleComponent },
     { path: 'vehicle/:id/edit', component: EditVehicleComponent },
 ];
-export const routing: EnvironmentProviders = provideRouter(routes);

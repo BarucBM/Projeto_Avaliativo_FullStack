@@ -43,6 +43,14 @@
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
+                    <th class="rent-th">
+                        Imagem
+                        <div class="relative">
+                            <input type="text" class="select-style" placeholder="Todos" (input)="filterCustomers()"
+                                   [(ngModel)]="filters.image_url">
+                            <div class="input-after-caret"></div>
+                        </div>
+                    </th>
                     <th class="rent-th">Ações</th>
                 </tr>
                 </thead>
@@ -52,6 +60,9 @@
                     <td class="td-style">{{ customer.cpf }}</td>
                     <td class="td-style">{{ customer.email }}</td>
                     <td class="td-style">{{ customer.phone }}</td>
+                    <td class="td-style">
+                        <img [src]="customer.image_url" alt="{{ customer.name }}" class="w-16 h-16 rounded-full">
+                    </td>
                     <td class="td-style">
                         <div class="flex space-x-2">
                             <button [routerLink]="['/customer', customer.id]" class="btn-actions bg-teal-600">
@@ -70,7 +81,7 @@
             </table>
 
             <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">
-                <span class="text-xs text-gray-900 xs:text-sm">Mostrando 1 de 2 total 2</span>
+                <span class="text-xs text-gray-900 xs:text-sm">Mostrando {{ filteredCustomers.length }} de {{ customers.length }} total</span>
                 <div class="inline-flex mt-2 xs:mt-0">
                     <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400">
                         Anterior

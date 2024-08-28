@@ -29,8 +29,7 @@ public class VehicleSpecification {
 
     protected static Specification<VehicleModel> hasRented(Boolean rented){
         return ((root, query, criteriaBuilder) -> {
-            if (rented == null) return null;
-            else return criteriaBuilder.equal(root.get("rented"), rented);
+            return (rented == null) ? null: criteriaBuilder.equal(root.get("rented"), rented);
         });
     }
 
@@ -42,5 +41,9 @@ public class VehicleSpecification {
     protected static Specification<VehicleModel> hasModel(String model) {
         return (root, query, criteriaBuilder) ->
                 model == null ? null : criteriaBuilder.like(criteriaBuilder.lower(root.get("MODEL")), "%" + model.toLowerCase() + "%");
+    }
+
+    public static Specification<VehicleModel> hasRentedStatus(boolean rented) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("rented"), rented);
     }
 }

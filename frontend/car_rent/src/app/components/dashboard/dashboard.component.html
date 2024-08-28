@@ -1,51 +1,43 @@
-
 <h1 class="title">Dashboard</h1>
-<div class="flex flex-wrap flex items-center ">
+<div class="flex flex-wrap items-center">
     <div class="w-full px-6 sm:w-1/2 xl:w-1/4">
         <div class="container-item">
             <div class="icon-wrapper bg-yellow-600">
-                <fa-icon [icon]="['fas', 'person-walking-luggage']" size="lg" class="text-indigo-900"/>
+                <fa-icon [icon]="['fas', 'person-walking-luggage']" size="lg" class="text-indigo-900"></fa-icon>
             </div>
-
             <div class="mx-5">
                 <h4 class="text-2xl font-semibold text-gray-700">{{ customerCount }}</h4>
                 <div class="text-gray-500">Total Usuários</div>
             </div>
         </div>
     </div>
-
     <div class="w-full px-6 sm:w-1/2 xl:w-1/4">
         <div class="container-item">
             <div class="icon-wrapper bg-green-600">
-                <fa-icon [icon]="['fas', 'road']" size="lg"/>
+                <fa-icon [icon]="['fas', 'road']" size="lg"></fa-icon>
             </div>
-
             <div class="mx-5">
-                <h4 class="text-2xl font-semibold text-gray-700">{{ availableVehicleCount }}</h4>
+                <h4 class="text-2xl font-semibold text-gray-700">{{ availableCount }}</h4>
                 <div class="text-gray-500">Veículos Disponíveis</div>
             </div>
         </div>
     </div>
-
     <div class="w-full px-6 sm:w-1/2 xl:w-1/4">
         <div class="container-item">
             <div class="icon-wrapper bg-pink-600">
-                <fa-icon [icon]="['fas', 'suitcase']" size="lg"/>
+                <fa-icon [icon]="['fas', 'suitcase']" size="lg"></fa-icon>
             </div>
-
             <div class="mx-5">
-                <h4 class="text-2xl font-semibold text-gray-700">{{ rentalCount }}</h4>
+                <h4 class="text-2xl font-semibold text-gray-700">{{ rentedCount }}</h4>
                 <div class="text-gray-500">Veículos Alugados</div>
             </div>
         </div>
     </div>
-
     <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/4 xl:mt-0">
         <div class="container-item">
             <div class="icon-wrapper bg-blue-600">
-                <fa-icon [icon]="['fas', 'car-side']" size="lg"/>
+                <fa-icon [icon]="['fas', 'car-side']" size="lg"></fa-icon>
             </div>
-
             <div class="mx-5">
                 <h4 class="text-2xl font-semibold">{{ vehicleCount }}</h4>
                 <div class="text-gray-500">Total Veículos</div>

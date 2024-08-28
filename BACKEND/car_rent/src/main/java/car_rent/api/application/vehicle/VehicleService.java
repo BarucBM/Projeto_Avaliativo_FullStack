@@ -6,13 +6,11 @@ import car_rent.api.domain.vehicle.VehicleModel;
 import car_rent.api.infrastructure.VehicleRepository;
 import car_rent.api.shared.utils.Messages;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class VehicleService {
@@ -78,5 +76,10 @@ public class VehicleService {
 
     public long getCountVehicle() {
         return vehicleRepository.count();
+    }
+
+    public long countVehiclesByStatus(boolean rented) {
+        Specification<VehicleModel> spec = Specification.where(VehicleSpecification.hasRentedStatus(rented));
+        return vehicleRepository.count(spec);
     }
 }

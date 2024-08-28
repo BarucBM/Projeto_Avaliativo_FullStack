@@ -7,5 +7,5 @@ export interface VehicleModel {
     rented: boolean;
     type: 'CAR' | 'MOTORCYCLE' | 'TRUCK' | 'VAN';
     year: number;
-    rentalId?: number;
+    rentalId: number;
 }
