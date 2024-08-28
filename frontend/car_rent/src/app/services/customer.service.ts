@@ -11,7 +11,7 @@ import {VehicleModel} from "../models/vehicle.model";
 })
 export class CustomerService {
 
-    private readonly baseUrl = 'http://localhost:8080/customer';
+    private readonly baseUrl = 'http://localhost:8080/customer;';
 
     constructor(private http: HttpClient) {}
 
@@ -45,7 +45,7 @@ export class CustomerService {
         return this.http.put<CustomerModel>(`${this.baseUrl}/${id}`, vehicle);
     }
 
-    delete(id: number | string): Observable<void> {
-        return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    delete(id: number | string): Observable<any> {
+        return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
     }
 }

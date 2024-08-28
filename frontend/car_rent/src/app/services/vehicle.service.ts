@@ -42,6 +42,6 @@ export class VehicleService {
     }
 
     delete(id: number | string): Observable<any> {
-        return this.http.delete<void>(`${this.baseUrl}${id}`);
+        return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
     }
 }

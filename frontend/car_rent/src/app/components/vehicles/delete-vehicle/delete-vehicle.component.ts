@@ -17,23 +17,17 @@ export class DeleteVehicleComponent implements OnInit {
 
     ngOnInit(): void {
         this.vehicleId = Number(this.route.snapshot.paramMap.get('id'));
-        if (this.vehicleId) {
-            this.deleteVehicle(this.vehicleId);
-        }
+        (this.vehicleId) && this.deleteVehicle(this.vehicleId);
     }
 
     deleteVehicle(id: number): void {
         this.vehicleService.delete(id).subscribe({
             next: () => {
-                this.router.navigate(['/vehicles']).then(r => {
-                    this.message = r ? "Deletado com sucesso." : "Erro ao deletar.";
-                    alert(this.message);
+                this.router.navigate(['/vehicles']).then(success => {
+                    if (success) this.message = "Deletado com sucesso."
                 });
-            }, error: (e) => {
-                this.message = `Error: ${e.message || 'Erro desconhecido.'}`;
-                alert(this.message);
-                console.error('Error:', e);
-            }
+            }, error: (e) =>  this.message = `Error: ${e.message || 'Erro desconhecido.'}`
         });
+        alert(this.message);
     }
 }
