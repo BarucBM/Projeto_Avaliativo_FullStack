@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { CustomerModel } from '../../models/customer.model';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { Router, RouterLink } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {CustomerModel} from '../../models/customer.model';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {FaIconComponent} from '@fortawesome/angular-fontawesome';
+import {Router, RouterLink} from '@angular/router';
 import {CustomerService} from "../../services/customer.service";
 import {emitDistinctChangesOnlyDefaultValue} from "@angular/compiler";
 
@@ -26,7 +26,8 @@ export class CustomersComponent implements OnInit {
     filterEmail: string = '';
     filterPhone: string = '';
 
-    constructor(private customerService: CustomerService, private router: Router) {}
+    constructor(private customerService: CustomerService, private router: Router) {
+    }
 
     ngOnInit(): void {
         this.filterCustomers();
@@ -38,7 +39,7 @@ export class CustomersComponent implements OnInit {
     }
 
     filterCustomers(): void {
-        const filters : { [key: string]: any }= {
+        const filters: { [key: string]: any } = {
             name: this.filterName,
             cpf: this.filterCpf,
             email: this.filterEmail,
@@ -46,10 +47,10 @@ export class CustomersComponent implements OnInit {
             page: this.page,
             size: this.customerPerPage
         };
-        let usedFilters : { [key: string]: any } = {};
+        let usedFilters: { [key: string]: any } = {};
 
         Object.keys(filters).forEach(key => {
-            if(filters[key] !== '' && filters[key] !== 0 && filters[key] !== null){
+            if (filters[key] !== '' && filters[key] !== 0 && filters[key] !== null) {
                 usedFilters[key] = filters[key];
             }
         });
@@ -61,10 +62,10 @@ export class CustomersComponent implements OnInit {
         });
     }
 
-    calculatePages(){
+    calculatePages() {
         this.customerService.count().subscribe(vehicles => {
             this.totalCustomers = vehicles
-            this.qntPage = Math.ceil( this.totalCustomers/this.customerPerPage)
+            this.qntPage = Math.ceil(this.totalCustomers / this.customerPerPage)
         })
     }
 
