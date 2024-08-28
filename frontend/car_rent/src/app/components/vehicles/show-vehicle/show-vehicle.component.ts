@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
 import { VehicleModel } from '../../../models/vehicle.model';
 import { VehicleService } from '../../../services/vehicle.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
-  selector: 'show-vehicle',
-  standalone: true,
-  imports: [],
-  templateUrl: './show-vehicle.component.html'
+    selector: 'show-vehicle',
+    standalone: true,
+    imports: [],
+    templateUrl: './show-vehicle.component.html'
 })
+
 export class ShowVehicleComponent {
   vehicle: VehicleModel = {
     id: 0,

@@ -1,23 +1,19 @@
-<h1 class="title">Veiculo</h1>
+<h1 class="title">Veículo</h1>
 <div class="w-full max-w-full mt-6 bg-white rounded-lg shadow-lg overflow-hidden h-auto p-8 mt-4">
     <div class="w-full h-full object-contain">
-        <img class="h-200 object-content border rounded-lg" src={{vehicle.image_url}} alt="Sunset in the mountains"/>
-        
+
+        <img class="w-full h-full rounded-md" [src]="vehicle?.image_url || 'images/default.png'" alt="Imagem Veículo">
     </div>
     <div class="px-6 py-4">
-        <div class="mb-2 text-2xl font-bold text-gray-900">{{vehicle.model}}</div>
+        <div class="mb-2 text-2xl font-bold text-gray-900">{{ vehicle?.brand }} {{ vehicle?.model }}</div>
         <p class="text-base text-gray-600">
-            Marca: {{vehicle.brand}}
-
+            Cor: {{ vehicle?.color }} | Placa: {{ vehicle?.licensePlate }}
         </p>
-        <p class="text-base text-gray-600">
-            Cor: {{vehicle.color}}
-
-        </p>
-        <p class="text-base text-gray-600">
-            Placa: {{vehicle.licensePlate}}
-
-        </p>
-        
-        
+        <p class="text-base text-gray-600">Status: {{ vehicle?.rented ? 'Alugado' : 'Disponível' }}</p>
+        <p class="text-base text-gray-600">Tipo: {{ vehicle?.type }}</p>
     </div>
+    <div class="px-6 pt-4 pb-6 flex flex-wrap">
+        <span class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-full">{{ vehicle?.year }}</span>
+    </div>
+</div>
+

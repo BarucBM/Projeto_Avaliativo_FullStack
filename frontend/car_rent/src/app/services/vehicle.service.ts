@@ -41,12 +41,7 @@ export class VehicleService {
         return this.http.put<VehicleModel>(`${this.baseUrl}/${id}`, vehicle);
     }
 
-    delete(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.baseUrl}/${id}`);
-    }
-
-    apiResponse(res: any, onSuccess: () => void): void {
-        console.log((res && res.message), res.message);
-        onSuccess();
+    delete(id: number): Observable<any> {
+        return this.http.delete(`${this.baseUrl}${id}`, {responseType:'text'});
     }
 }
