@@ -9,14 +9,8 @@ import {VehicleModel} from "../models/vehicle.model";
 @Injectable({
     providedIn: 'root',
 })
-export class CustomerService {//extends ApiService {
-    // constructor({http}: { http: HttpClient }) {
-    //     super(http);
-    // }
+export class CustomerService {
 
-    // protected get path(): string {
-    //     return 'customer';
-    // }
     private readonly baseUrl = 'http://localhost:8080/customer';
 
     constructor(private http: HttpClient) {}
@@ -51,12 +45,7 @@ export class CustomerService {//extends ApiService {
         return this.http.put<CustomerModel>(`${this.baseUrl}/${id}`, vehicle);
     }
 
-    delete(id: number): Observable<void> {
+    delete(id: number | string): Observable<void> {
         return this.http.delete<void>(`${this.baseUrl}/${id}`);
-    }
-
-    apiResponse(res: any, onSuccess: () => void): void {
-        console.log((res && res.message), res.message);
-        onSuccess();
     }
 }
