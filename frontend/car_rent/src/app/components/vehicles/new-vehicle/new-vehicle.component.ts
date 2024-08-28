@@ -25,26 +25,20 @@ export class NewVehicleComponent implements OnInit {
         rentalId: 0,
         image_url: ''
     };
-    message = ''
     submitted = false;
 
-    constructor(
-        private vehicleService: VehicleService,
-        private router: Router
-    ) {}
+    constructor(private vehicleService: VehicleService, private router: Router) {}
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
     saveVehicle(): void {
         this.vehicleService.create(this.vehicle).subscribe({
-            next: (res) => this.vehicleService.apiResponse(res, () => {
+            next: (createdVehicle) => {
                 this.submitted = true;
-                this.message = "Veículo Atualizado com sucesso.";
-                this.router.navigate(['/vehicles']).then(r => r);
-                alert(this.message)
-            }), error: (e) => console.error('Erro: ', e)
-        })
+                this.router.navigate(['/vehicle', createdVehicle.id])
+                    .then(r => alert(r ? "Criado com sucesso." : "Erro ao criar."));
+            }, error: (e) => console.error(e)
+        });
     }
 
     newVehicle(): void {

@@ -91,8 +91,7 @@
                 <tr *ngFor="let vehicle of vehicles">
                     <td class="td-style">
                         <div class="flex-shrink-0 w-20 h-20">
-                            <img class="w-full h-full rounded-md" [src]="vehicle?.image_url || 'images/default.png'"
-                                 alt="Imagem Veículo">
+                            <img class="w-full h-full rounded-md" [src]="vehicle?.image_url || 'images/default.png'" alt="Imagem Veículo">
                         </div>
                     </td>
                     <td class="td-style">{{ vehicle?.brand }}</td>
@@ -119,10 +118,10 @@
                     </td>
                     <td class="td-style">
                         <div class="flex space-x-2">
-                            <button [routerLink]="['/vehicle', vehicle?.id]" class="btn-actions bg-teal-600">
+                            <button [routerLink]="vehicle ? ['/vehicle', vehicle.id] : ['/vehicle']" class="btn-actions bg-teal-600">
                                 <fa-icon [icon]="['fas', 'eye']" title="Visualizar"></fa-icon>
                             </button>
-                            <button [routerLink]="['/vehicle', vehicle.id, 'edit']" class="btn-actions bg-yellow-600">
+                            <button [routerLink]="vehicle ? ['/vehicle', vehicle.id, 'edit'] : ['/vehicle']" class="btn-actions bg-yellow-600">
                                 <fa-icon [icon]="['fas', 'edit']" title="Editar"></fa-icon>
                             </button>
                             <button class="btn-actions bg-red-600" (click)="deleteVehicle(vehicle.id)">

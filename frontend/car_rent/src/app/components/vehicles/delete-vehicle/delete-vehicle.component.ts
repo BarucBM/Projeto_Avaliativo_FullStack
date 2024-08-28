@@ -3,14 +3,14 @@ import {VehicleService} from "../../../services/vehicle.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-    selector: 'app-delete-vehicle',
+    selector: 'delete-vehicle',
     standalone: true,
     imports: [],
     templateUrl: './delete-vehicle.component.html'
 })
 export class DeleteVehicleComponent implements OnInit {
     vehicleId: number | null = null;
-    message: string = '';
+    message: string = 'Erro ao deletar.';
 
     constructor(private vehicleService: VehicleService, private route: ActivatedRoute, private router: Router) {
     }
@@ -25,9 +25,16 @@ export class DeleteVehicleComponent implements OnInit {
     deleteVehicle(id: number): void {
         this.vehicleService.delete(id).subscribe({
             next: () => {
-                this.message = 'Veículo excluído com sucesso!';
-                this.router.navigate(['/vehicles']).then(r => r);
-            }, error: (e) => console.error('Erro:', e)
+                this.router.navigate(['/vehicles']).then(r => {
+                    this.message = r ? "Deletado com sucesso." : "Erro ao deletar.";
+                    alert(this.message);
+                });
+            },
+            error: (e) => {
+                this.message = `Error: ${e.message || 'Erro desconhecido.'}`;
+                alert(this.message);
+                console.error('Error:', e);
+            }
         });
     }
 }
