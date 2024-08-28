@@ -33,15 +33,17 @@ export class NewVehicleComponent implements OnInit {
         private router: Router
     ) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+    }
 
     saveVehicle(): void {
         this.vehicleService.create(this.vehicle).subscribe({
             next: (res) => this.vehicleService.apiResponse(res, () => {
                 this.submitted = true;
-                this.router.navigate(['/vehicle', this.vehicle.id]).then(r => r);
+                this.message = "Veículo Atualizado com sucesso.";
+                this.router.navigate(['/vehicles']).then(r => r);
                 alert(this.message)
-            }), error: (e) => console.error('Error creating vehicle:', e)
+            }), error: (e) => console.error('Erro: ', e)
         })
     }
 

@@ -112,4 +112,12 @@ export class VehiclesComponent implements OnInit {
             this.applyFilters();
         }
     }
+
+    deleteVehicle(id: number) {
+        if (confirm('Você tem certeza de que deseja excluir este veículo?')) {
+            this.vehicleService.delete(id).subscribe({
+                next: () => this.applyFilters(), error: (e) => console.error('Erro:', e)
+            });
+        }
+    }
 }
