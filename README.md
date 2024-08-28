@@ -4,8 +4,8 @@ Este projeto é uma aplicação web fullstack desenvolvida com **Spring Boot** n
 
 ## Alunos
 
-- [TheAlexCesar](https://github.com/thealexcesar)
-- [BarucBM](https://github.com/BarucBM)
+- [Alex Cesar](https://github.com/thealexcesar)
+- [Baruc BM](https://github.com/BarucBM)
 
 ## Funcionalidades
 
