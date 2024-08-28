@@ -10,8 +10,8 @@ import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {VehiclesComponent} from "./components/vehicles/vehicles.component";
 import {CustomersComponent} from "./components/customers/customers.component";
+import {NewVehicleComponent} from "./components/vehicles/new-vehicle/new-vehicle.component";
 import {ShowVehicleComponent} from "./components/vehicles/show-vehicle/show-vehicle.component";
-import {FormComponent} from "./components/vehicles/form/form.component";
 
 @Component({
     selector: 'root',
@@ -20,14 +20,14 @@ import {FormComponent} from "./components/vehicles/form/form.component";
         CustomersComponent,
         DashboardComponent,
         FaIconComponent,
-        FormComponent,
         FormsModule,
         HeaderComponent,
         LoginComponent,
         NavbarComponent,
+        NewVehicleComponent,
+        ShowVehicleComponent,
         NgIf,
         RouterOutlet,
-        ShowVehicleComponent,
         VehiclesComponent
     ],
     templateUrl: './app.component.html'

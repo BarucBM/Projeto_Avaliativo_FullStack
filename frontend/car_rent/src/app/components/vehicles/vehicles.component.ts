@@ -45,7 +45,7 @@ export class VehiclesComponent implements OnInit {
         { value: 'false', label: 'Disponível' },
     ];
 
-    constructor(private vehicleService: VehicleService) {}
+    constructor(private vehicleService: VehicleService, private router: Router) {}
 
     ngOnInit(): void {
         this.applyFilters();
@@ -65,59 +65,51 @@ export class VehiclesComponent implements OnInit {
             size: this.vehiclesPerPage
         };
         let usedFilters : { [key: string]: any } = {};
-    
+
         Object.keys(filters).forEach(key => {
             if(filters[key] !== '' && filters[key] !== 0 && filters[key] !== null){
                 usedFilters[key] = filters[key]
-                
+
             }
-            
+
         })
-        
-
-
-
 
         this.vehicleService.getAll(usedFilters).subscribe(vehicles => {
             this.vehicles = vehicles;
             this.vehicleCount = vehicles.length;
         });
-
-
     }
 
     redirectToNewVehicle(): void {
-
+        console.log('Redirecionando para novo veículo');
+        this.router.navigate(['/vehicle/new']).then(r => r);
     }
+
 
     calculatePages(){
         this.vehicleService.count().subscribe(vehicles => {
             this.totalVehicles = vehicles
             this.qntPage = Math.ceil( this.totalVehicles/this.vehiclesPerPage)
         })
-        
-    }
-
-    nextPage(){
-        if(this.vehicleCount==this.vehiclesPerPage && this.totalVehicles >this.vehiclesPerPage ){
-            if(this.page >= this.qntPage){
-                this.page = this.qntPage
-            }else{
-                this.page = this.page + 1
-    
-            }   
-        }
-       
 
     }
 
-    previousPage(){
-        
-        if(this.page <=1){
-            this.page = 1
-        }else{
-            this.page = this.page -1
-        }
+    setPage(page: number): void {
+        this.page = page;
+        this.applyFilters();
+    }
 
+    nextPage(): void {
+        if (this.page < this.qntPage) {
+            this.page++;
+            this.applyFilters();
+        }
+    }
+
+    previousPage(): void {
+        if (this.page > 1) {
+            this.page--;
+            this.applyFilters();
+        }
     }
 }

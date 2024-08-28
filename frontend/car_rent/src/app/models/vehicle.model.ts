@@ -5,7 +5,8 @@ export interface VehicleModel {
     licensePlate: string;
     model: string;
     rented: boolean;
-    type: 'CAR' | 'MOTORCYCLE' | 'TRUCK' | 'VAN';
+    type: 'CAR' | 'BUS' | 'MOTORCYCLE' | 'TRUCK' | 'VAN';
     year: number;
     rentalId: number;
+    image_url: string;
 }

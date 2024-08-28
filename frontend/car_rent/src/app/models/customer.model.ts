@@ -4,5 +4,4 @@ export interface CustomerModel {
     email: string;
     name: string;
     phone: string;
-    image_url: string;
 }

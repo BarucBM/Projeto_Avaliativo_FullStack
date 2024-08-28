@@ -15,49 +15,56 @@
                     <th class="rent-th">
                         Marca
                         <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterBrand" (input)="applyFilters()">
+                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterBrand"
+                                   (input)="applyFilters()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
                     <th class="rent-th">
                         Cor
                         <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterColor" (input)="applyFilters()">
+                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterColor"
+                                   (input)="applyFilters()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
                     <th class="rent-th">
                         Placa
                         <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterLicensePlate" (input)="applyFilters()">
+                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterLicensePlate"
+                                   (input)="applyFilters()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
                     <th class="rent-th">
                         Modelo
                         <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterModel" (input)="applyFilters()">
+                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterModel"
+                                   (input)="applyFilters()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
                     <th class="rent-th">
                         Ano
                         <div class="relative">
-                            <input type="number" class="select-style" placeholder="Todos" [(ngModel)]="filterYear" (input)="applyFilters()">
+                            <input type="number" class="select-style" placeholder="Todos" [(ngModel)]="filterYear"
+                                   (input)="applyFilters()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
                     <th class="rent-th" style="width:130px; column-span: 2">
                         Tipo
                         <div class="relative">
-                            <select class="select-style mt-1 border rounded" [(ngModel)]="filterType" (change)="applyFilters()">
+                            <select class="select-style mt-1 border rounded" [(ngModel)]="filterType"
+                                    (change)="applyFilters()">
                                 <option value="">Todos</option>
                                 <option *ngFor="let option of carTypes" [value]="option.value">
                                     {{ option.label }}
                                 </option>
                             </select>
                             <div class="input-after-caret">
-                                <fa-icon [icon]="['fas', 'angle-down']" size="sm" class="mb-2 fill-current w-4 h-4 text-gray-800"></fa-icon>
+                                <fa-icon [icon]="['fas', 'angle-down']" size="sm"
+                                         class="mb-2 fill-current w-4 h-4 text-gray-800"></fa-icon>
                             </div>
                         </div>
                     </th>
@@ -72,7 +79,8 @@
                                 </option>
                             </select>
                             <div class="input-after-caret">
-                                <fa-icon [icon]="['fas', 'angle-down']" size="sm" class="mb-2 fill-current w-4 h-4 text-gray-800"></fa-icon>
+                                <fa-icon [icon]="['fas', 'angle-down']" size="sm"
+                                         class="mb-2 fill-current w-4 h-4 text-gray-800"></fa-icon>
                             </div>
                         </div>
                     </th>
@@ -83,7 +91,8 @@
                 <tr *ngFor="let vehicle of vehicles">
                     <td class="td-style">
                         <div class="flex-shrink-0 w-20 h-20">
-                            <img class="w-full h-full rounded-md" [src]="vehicle.image || 'images/default_car.png'" alt="Imagem Veículo">
+                            <img class="w-full h-full rounded-md" [src]="vehicle?.image_url || 'images/default.png'"
+                                 alt="Imagem Veículo">
                         </div>
                     </td>
                     <td class="td-style">{{ vehicle?.brand }}</td>
@@ -92,35 +101,33 @@
                     <td class="td-style">{{ vehicle?.model }}</td>
                     <td class="td-style">{{ vehicle?.year }}</td>
                     <td class="td-style text-center text-slate-950">
-                        <fa-icon [icon]="['fas', vehicle.type.toLowerCase() === 'van' ? 'van-shuttle' : vehicle.type.toLowerCase()]"></fa-icon>
+                        <fa-icon
+                                [icon]="['fas', vehicle.type.toLowerCase() === 'van' ? 'van-shuttle' : vehicle.type.toLowerCase()]"/>
                     </td>
                     <td class="td-style">
-              <span class="relative inline-block px-3 py-1 font-semibold leading-tight"
-                    [ngClass]="{
-                      'text-red-900 bg-red-200': vehicle.rented,
-                      'text-green-900 bg-green-200': !vehicle.rented
-                    }">
-                <span aria-hidden="true" class="absolute inset-0 opacity-50 rounded-full"
-                      [ngClass]="{
-                        'bg-red-200': vehicle.rented,
-                        'bg-green-200': !vehicle.rented
-                      }"></span>
-                <span class="relative p-1 rounded">
-                  {{ vehicle.rented ? 'Alugado' : 'Disponível' }}
-                </span>
-              </span>
+                        <span class="relative inline-block px-3 py-1 font-semibold leading-tight"
+                              [ngClass]="{
+                              'text-red-900 bg-red-200': vehicle.rented,
+                              'text-green-900 bg-green-200': !vehicle.rented
+                              }">
+                            <span aria-hidden="true" class="absolute inset-0 opacity-50 rounded-full"
+                                  [ngClass]="{'bg-red-200': vehicle.rented,'bg-green-200': !vehicle.rented}">
+
+                            </span>
+                            <span class="relative p-1 rounded"> {{ vehicle.rented ? 'Alugado' : 'Disponível' }} </span>
+                        </span>
                     </td>
                     <td class="td-style">
                         <div class="flex space-x-2">
-                            <button [routerLink]="['/vehicle', vehicle.id]" class="btn-actions bg-teal-600">
+                            <button [routerLink]="['/vehicle', vehicle?.id]" class="btn-actions bg-teal-600">
                                 <fa-icon [icon]="['fas', 'eye']" title="Visualizar"></fa-icon>
                             </button>
-                            <button [routerLink]="['/vehicle', vehicle.id, 'edit']" class="btn-actions bg-yellow-600">
-                                <fa-icon [icon]="['fas', 'edit']" title="Editar"></fa-icon>
-                            </button>
-<!--                            <button class="btn-actions bg-red-600" (click)="deleteVehicle(vehicle.id)">-->
-<!--                                <fa-icon [icon]="['fas', 'trash']" title="Deletar"></fa-icon>-->
+<!--                            <button [routerLink]="['/vehicle', vehicle.id, 'edit']" class="btn-actions bg-yellow-600">-->
+<!--                                <fa-icon [icon]="['fas', 'edit']" title="Editar"></fa-icon>-->
 <!--                            </button>-->
+<!--                                                        <button class="btn-actions bg-red-600" (click)="deleteVehicle(vehicle.id)">-->
+<!--                                                            <fa-icon [icon]="['fas', 'trash']" title="Deletar"></fa-icon>-->
+<!--                                                        </button>-->
                         </div>
                     </td>
                 </tr>
@@ -128,14 +135,36 @@
             </table>
 
             <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">
-                <span class="text-xs text-gray-900 xs:text-sm">Página {{ page }} de {{ qntPage }} </span>
-                <span class="text-xs text-gray-900 xs:text-sm">Mostrando {{ vehicles.length }} de {{ totalVehicles }} total</span>
+                <span class="text-xs text-gray-900 xs:text-sm">{{ totalVehicles }} veículos</span>
                 <div class="inline-flex mt-2 xs:mt-0">
-                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400" (click)="previousPage()" (click)="applyFilters()">
-                        Anterior
+                    <button
+                            class="btn-pagination text-white bg-slate-700 rounded-l"
+                            (click)="previousPage()"
+                            [disabled]="page === 1"
+                            [class.bg-slate-300]="page === 1"
+                            [class.cursor-not-allowed]="page === 1"
+                            [class.bg-slate-700]="page !== 1">
+                        Prev
                     </button>
-                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-r hover:bg-gray-400" (click)="nextPage()" (click)="applyFilters()">
-                        Próximo
+                    <ng-container *ngFor="let p of [].constructor(qntPage); let i = index">
+                        <button
+                                class="btn-pagination border text-slate-900"
+                                [class.bg-slate-400]="page !== i + 1"
+                                [class.bg-slate-500]="page === i + 1"
+                                [class.cursor-not-allowed]="page === i + 1"
+                                [class.text-white]="page === i + 1"
+                                (click)="setPage(i + 1)">
+                            {{ i + 1 }}
+                        </button>
+                    </ng-container>
+                    <button
+                            class="btn-pagination text-white bg-sta-600 rounded-r"
+                            (click)="nextPage()"
+                            [disabled]="page === qntPage"
+                            [class.bg-slate-300]="page === qntPage"
+                            [class.cursor-not-allowed]="page === qntPage"
+                            [class.bg-slate-700]="page !== qntPage">
+                        Next
                     </button>
                 </div>
             </div>

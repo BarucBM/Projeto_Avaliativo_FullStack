@@ -61,9 +61,6 @@
                     <td class="td-style">{{ customer.email }}</td>
                     <td class="td-style">{{ customer.phone }}</td>
                     <td class="td-style">
-                        <img [src]="customer.image_url" alt="{{ customer.name }}" class="w-16 h-16 rounded-full">
-                    </td>
-                    <td class="td-style">
                         <div class="flex space-x-2">
                             <button [routerLink]="['/customer', customer.id]" class="btn-actions bg-teal-600">
                                 <fa-icon [icon]="['fas', 'eye']" title="Visualizar"></fa-icon>

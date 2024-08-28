@@ -1,13 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-edit-vehicle',
+  selector: 'edit-vehicle',
   standalone: true,
   imports: [],
   templateUrl: './edit-vehicle.component.html'
 })
 export class EditVehicleComponent {
-  /*onUpdate(data) {
-      this.service.update(data.id, data).subscribe(() => {
-      });*/
 }

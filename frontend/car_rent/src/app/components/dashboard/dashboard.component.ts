@@ -45,7 +45,7 @@ export class DashboardComponent extends ApiService implements OnInit {
         this.getCount("vehicle").subscribe(count => this.vehicleCount = count);
         this.getCount("vehicle/available").subscribe(count => this.availableCount = count);
         this.getCount("customer").subscribe(count => this.customerCount = count);
-        this.getCount("rental").subscribe(count => this.rentedCount = count);
+        this.getCount("vehicle/rented").subscribe(count => this.rentedCount = count);
     }
 
     private getCount(endpoint: string) {
