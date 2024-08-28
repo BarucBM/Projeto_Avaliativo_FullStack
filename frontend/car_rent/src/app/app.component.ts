@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
+import {RouterOutlet} from '@angular/router';
 import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {NavbarComponent} from "./components/navbar/navbar.component";

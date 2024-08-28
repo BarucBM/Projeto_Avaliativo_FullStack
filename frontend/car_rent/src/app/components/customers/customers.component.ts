@@ -89,4 +89,12 @@ export class CustomersComponent implements OnInit {
     }
 
     protected readonly emitDistinctChangesOnlyDefaultValue = emitDistinctChangesOnlyDefaultValue;
+
+    deleteCustomer(id: number | string) {
+        if (confirm('Você tem certeza de que deseja excluir este cliente?')) {
+            this.customerService.delete(id).subscribe({
+                next: () => this.filterCustomers(), error: (e) => console.error('Erro:', e)
+            });
+        }
+    }
 }
