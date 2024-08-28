@@ -94,11 +94,11 @@
                             <img class="w-full h-full rounded-md" [src]="vehicle?.image_url || 'images/default.png'" alt="Imagem Veículo">
                         </div>
                     </td>
-                    <td class="td-style">{{ vehicle?.brand }}</td>
-                    <td class="td-style">{{ vehicle?.color }}</td>
-                    <td class="td-style">{{ vehicle?.licensePlate }}</td>
-                    <td class="td-style">{{ vehicle?.model }}</td>
-                    <td class="td-style">{{ vehicle?.year }}</td>
+                    <td class="td-style">{{ vehicle.brand }}</td>
+                    <td class="td-style">{{ vehicle.color }}</td>
+                    <td class="td-style">{{ vehicle.licensePlate }}</td>
+                    <td class="td-style">{{ vehicle.model }}</td>
+                    <td class="td-style">{{ vehicle.year }}</td>
                     <td class="td-style text-center text-slate-950">
                         <fa-icon
                                 [icon]="['fas', vehicle.type.toLowerCase() === 'van' ? 'van-shuttle' : vehicle.type.toLowerCase()]"/>
