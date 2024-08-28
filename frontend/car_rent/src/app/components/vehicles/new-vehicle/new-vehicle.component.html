@@ -1,2 +1,53 @@
 <h1 class="title">Novo Veículo</h1>
-<!--<vehicle-form (submitForm)="onCreate($event)"></vehicle-form>-->
+
+<form (ngSubmit)="saveVehicle()">
+    <div>
+        <label for="brand">Marca</label>
+        <input id="brand" [(ngModel)]="vehicle.brand" name="brand" required>
+    </div>
+
+    <div>
+        <label for="model">Modelo</label>
+        <input id="model" [(ngModel)]="vehicle.model" name="model" required>
+    </div>
+
+    <div>
+        <label for="color">Cor</label>
+        <input id="color" [(ngModel)]="vehicle.color" name="color" required>
+    </div>
+
+    <div>
+        <label for="licensePlate">Placa</label>
+        <input id="licensePlate" [(ngModel)]="vehicle.licensePlate" name="licensePlate" required>
+    </div>
+
+    <div>
+        <label for="type">Tipo</label>
+        <select id="type" [(ngModel)]="vehicle.type" name="type">
+            <option value="CAR">Carro</option>
+            <option value="BUS">Ônibus</option>
+            <option value="MOTORCYCLE">Moto</option>
+            <option value="TRUCK">Caminhão</option>
+            <option value="VAN">Van</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="year">Ano</label>
+        <input id="year" type="number" [(ngModel)]="vehicle.year" name="year" required>
+    </div>
+
+    <div>
+        <label for="rented">Alugado</label>
+        <input id="rented" type="checkbox" [(ngModel)]="vehicle.rented" name="rented">
+    </div>
+
+    <div>
+        <label for="image_url">URL da Imagem</label>
+        <input id="image_url" [(ngModel)]="vehicle.image_url" name="image_url">
+    </div>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<button (click)="newVehicle()">Novo Veículo</button>

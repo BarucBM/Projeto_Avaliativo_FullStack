@@ -26,7 +26,7 @@ export class VehicleService {
         }else{
             return this.http.get<VehicleModel[]>(this.baseUrl);
         }
-        
+
     }
 
     getById(id: number): Observable<VehicleModel> {
@@ -43,5 +43,10 @@ export class VehicleService {
 
     delete(id: number): Observable<void> {
         return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    }
+
+    apiResponse(res: any, onSuccess: () => void): void {
+        console.log((res && res.message), res.message);
+        onSuccess();
     }
 }

@@ -35,12 +35,7 @@ import {ShowVehicleComponent} from "./components/vehicles/show-vehicle/show-vehi
 export class AppComponent {
     showHeader: boolean = true;
 
-    constructor(library: FaIconLibrary, private router: Router) {
-        /*this.router.events.subscribe(event => {
-            if (event instanceof NavigationEnd) {
-                this.showHeader = !event.url.includes('/login');
-            }
-        });*/
+    constructor(library: FaIconLibrary) {
         library.addIconPacks(fas);
     }
 }
