@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {VehicleModel} from "../../../models/vehicle.model";
-import {VehicleService} from "../../../services/vehicle.service";
-import {ActivatedRoute} from "@angular/router";
+
+import { Component, OnInit } from '@angular/core';
+import { VehicleModel } from '../../../models/vehicle.model';
+import { VehicleService } from '../../../services/vehicle.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
     selector: 'show-vehicle',
@@ -9,15 +11,40 @@ import {ActivatedRoute} from "@angular/router";
     imports: [],
     templateUrl: './show-vehicle.component.html'
 })
-export class ShowVehicleComponent implements OnInit {
-    vehicle: VehicleModel | null = null;
 
-    constructor(private vehicleService: VehicleService, private route: ActivatedRoute) {}
+export class ShowVehicleComponent {
+  vehicle: VehicleModel = {
+    id: 0,
+    brand: '',
+    color: '',
+    licensePlate: '',
+    model: '',
+    rented: false,
+    type: 'CAR',
+    year: 0,
+    rentalId: 0,
+    image_url: ''
+  };
+  message = '';
+  submitted = false;
 
-    ngOnInit(): void {
-        const vehicleId = Number(this.route.snapshot.paramMap.get('id'));
-        vehicleId ?
-            this.vehicleService.getById(vehicleId).subscribe(v => this.vehicle = v)
-            : console.error('ID do veículo não encontrado');
-    }
+  constructor(
+      private vehicleService: VehicleService,
+      private route: ActivatedRoute,
+      private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.getVehicle(this.route.snapshot.paramMap.get('id'));
+  }
+
+  getVehicle(id: string | null): void {
+    this.vehicleService.getById(Number(id))
+        .subscribe({
+          next: (data) => {
+            this.vehicle = data;
+          },
+          error: (e) => console.error(e)
+        });
+  }
 }
