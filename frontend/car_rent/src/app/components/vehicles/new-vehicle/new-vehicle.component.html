@@ -1,29 +1,29 @@
 <h1 class="title">Novo Veículo</h1>
 
-<form (ngSubmit)="saveVehicle()">
-    <div>
+<form (ngSubmit)="saveVehicle()" class="vehicle-form">
+    <div class="form-group">
         <label for="brand">Marca</label>
-        <input id="brand" [(ngModel)]="vehicle.brand" name="brand" required>
+        <input id="brand" class="form-input" [(ngModel)]="vehicle.brand" name="brand" required>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="model">Modelo</label>
-        <input id="model" [(ngModel)]="vehicle.model" name="model" required>
+        <input id="model" class="form-input" [(ngModel)]="vehicle.model" name="model" required>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="color">Cor</label>
-        <input id="color" [(ngModel)]="vehicle.color" name="color" required>
+        <input id="color" class="form-input" [(ngModel)]="vehicle.color" name="color" required>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="licensePlate">Placa</label>
-        <input id="licensePlate" [(ngModel)]="vehicle.licensePlate" name="licensePlate" required>
+        <input id="licensePlate" class="form-input" [(ngModel)]="vehicle.licensePlate" name="licensePlate" required>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="type">Tipo</label>
-        <select id="type" [(ngModel)]="vehicle.type" name="type">
+        <select id="type" class="form-input" [(ngModel)]="vehicle.type" name="type">
             <option value="CAR">Carro</option>
             <option value="BUS">Ônibus</option>
             <option value="MOTORCYCLE">Moto</option>
@@ -32,22 +32,21 @@
         </select>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="year">Ano</label>
-        <input id="year" type="number" [(ngModel)]="vehicle.year" name="year" required>
+        <input id="year" class="form-input" type="number" [(ngModel)]="vehicle.year" name="year" required>
     </div>
 
-    <div>
+    <div class="form-group flex start">
         <label for="rented">Alugado</label>
-        <input id="rented" type="checkbox" [(ngModel)]="vehicle.rented" name="rented">
+        <input id="rented" class="mx-8 form-check" type="checkbox" [(ngModel)]="vehicle.rented" name="rented">
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="image_url">URL da Imagem</label>
-        <input id="image_url" [(ngModel)]="vehicle.image_url" name="image_url">
+        <input id="image_url" class="form-input" [(ngModel)]="vehicle.image_url" name="image_url">
     </div>
-
-    <button type="submit">Salvar</button>
+    <div class="flex justify-end space-x-2 mt-4">
+        <button class="inline-block px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700">Salvar</button>
+    </div>
 </form>
-
-<button (click)="newVehicle()">Novo Veículo</button>

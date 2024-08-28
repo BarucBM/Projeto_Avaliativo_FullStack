@@ -1,35 +1,61 @@
 <h1 class="title">Editar Veículo</h1>
-<div class="p-6 bg-white rounded-md shadow-md">
-    <h2 class="text-lg font-semibold text-gray-700 capitalize">Detalhes do Veículo</h2>
+
+<div class="vehicle-form">
     <form (ngSubmit)="updateVehicle()">
-        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-            <div>
-                <label class="text-gray-700">Marca</label>
-                <input [(ngModel)]="vehicle.brand" name="brand"
-                       class="w-full mt-2 border-gray-200 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
-                       type="text" required>
-            </div>
-            <div>
-                <label class="text-gray-700">Tipo</label>
-                <select [(ngModel)]="vehicle.type" name="type"
-                        class="w-full mt-2 border-gray-200 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
-                        required>
-                    <option value="CAR">Carro</option>
-                    <option value="BUS">Ônibus</option>
-                    <option value="MOTORCYCLE">Motocicleta</option>
-                    <option value="TRUCK">Caminhão</option>
-                    <option value="VAN">Van</option>
-                </select>
-            </div>
+        <div class="form-group">
+            <label for="brand" class="text-gray-700">Marca</label>
+            <input id="brand" [(ngModel)]="vehicle.brand" name="brand"
+                   class="form-input" type="text" required>
         </div>
-        <div class="flex justify-end mt-4">
-            <button type="submit"
-                    class="px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-                Salvar
-            </button>
+
+        <div class="form-group">
+            <label for="model" class="text-gray-700">Modelo</label>
+            <input id="model" [(ngModel)]="vehicle.model" name="model"
+                   class="form-input" type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label for="color" class="text-gray-700">Cor</label>
+            <input id="color" [(ngModel)]="vehicle.color" name="color"
+                   class="form-input" type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label for="licensePlate" class="text-gray-700">Placa</label>
+            <input id="licensePlate" [(ngModel)]="vehicle.licensePlate" name="licensePlate"
+                   class="form-input" type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label for="type" class="text-gray-700">Tipo</label>
+            <select id="type" [(ngModel)]="vehicle.type" name="type"
+                    class="form-input" required>
+                <option value="CAR">Carro</option>
+                <option value="BUS">Ônibus</option>
+                <option value="MOTORCYCLE">Motocicleta</option>
+                <option value="TRUCK">Caminhão</option>
+                <option value="VAN">Van</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="year" class="text-gray-700">Ano</label>
+            <input id="year" [(ngModel)]="vehicle.year" name="year"
+                   class="form-input" type="number" required>
+        </div>
+
+        <div class="form-group flex-start">
+            <label for="rented" class="text-gray-700">Alugado</label>
+            <input id="rented" class="form-check" type="checkbox" [(ngModel)]="vehicle.rented" name="rented">
+        </div>
+
+        <div class="form-group">
+            <label for="image_url" class="text-gray-700">URL da Imagem</label>
+            <input id="image_url" [(ngModel)]="vehicle.image_url" name="image_url"
+                   class="form-input" type="text">
+        </div>
+        <div class="flex-end">
+            <button type="submit">Salvar</button>
         </div>
     </form>
-<!--    <div *ngIf="message" class="mt-4 p-2 bg-green-200 text-green-800 rounded-md">-->
-<!--        {{ message }}-->
-<!--    </div>-->
 </div>

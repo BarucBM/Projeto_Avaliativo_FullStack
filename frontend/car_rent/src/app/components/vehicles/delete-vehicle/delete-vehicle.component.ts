@@ -29,8 +29,7 @@ export class DeleteVehicleComponent implements OnInit {
                     this.message = r ? "Deletado com sucesso." : "Erro ao deletar.";
                     alert(this.message);
                 });
-            },
-            error: (e) => {
+            }, error: (e) => {
                 this.message = `Error: ${e.message || 'Erro desconhecido.'}`;
                 alert(this.message);
                 console.error('Error:', e);

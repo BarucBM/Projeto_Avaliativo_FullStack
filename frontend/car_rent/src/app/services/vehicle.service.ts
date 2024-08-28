@@ -41,7 +41,7 @@ export class VehicleService {
         return this.http.put<VehicleModel>(`${this.baseUrl}/${id}`, vehicle);
     }
 
-    delete(id: number): Observable<any> {
+    delete(id: number | string): Observable<any> {
         return this.http.delete(`${this.baseUrl}${id}`, {responseType:'text'});
     }
 }
