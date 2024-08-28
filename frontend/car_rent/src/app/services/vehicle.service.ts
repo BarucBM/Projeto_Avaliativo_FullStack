@@ -19,10 +19,14 @@ export class VehicleService {
         let params = new HttpParams();
         if (filters) {
             Object.keys(filters).forEach(key => {
-                params = filters[key] && params.append(key, filters[key]);
+                params = params.append(key, filters[key]);
             });
+            console.log(this.baseUrl, { params })
+            return this.http.get<VehicleModel[]>(this.baseUrl, { params });
+        }else{
+            return this.http.get<VehicleModel[]>(this.baseUrl);
         }
-        return this.http.get<VehicleModel[]>(this.baseUrl, { params });
+        
     }
 
     getById(id: number): Observable<VehicleModel> {

@@ -43,7 +43,7 @@
                     <th class="rent-th">
                         Ano
                         <div class="relative">
-                            <input type="text" class="select-style" placeholder="Todos" [(ngModel)]="filterYear" (input)="applyFilters()">
+                            <input type="number" class="select-style" placeholder="Todos" [(ngModel)]="filterYear" (input)="applyFilters()">
                             <div class="input-after-caret"></div>
                         </div>
                     </th>
@@ -128,12 +128,13 @@
             </table>
 
             <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">
-                <span class="text-xs text-gray-900 xs:text-sm">Mostrando {{ vehicles.length }} de {{ vehicleCount }} total</span>
+                <span class="text-xs text-gray-900 xs:text-sm">Página {{ page }} de {{ qntPage }} </span>
+                <span class="text-xs text-gray-900 xs:text-sm">Mostrando {{ vehicles.length }} de {{ totalVehicles }} total</span>
                 <div class="inline-flex mt-2 xs:mt-0">
-                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400">
+                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400" (click)="previousPage()" (click)="applyFilters()">
                         Anterior
                     </button>
-                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-r hover:bg-gray-400">
+                    <button class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-r hover:bg-gray-400" (click)="nextPage()" (click)="applyFilters()">
                         Próximo
                     </button>
                 </div>
