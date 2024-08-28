@@ -12,11 +12,9 @@ public class VehicleSpecification {
         });
     }
 
-    protected static Specification<VehicleModel> hasYear(Integer minYear, Integer maxYear){
+    protected static Specification<VehicleModel> hasYear(Integer year){
         return ((root, query, criteriaBuilder) -> {
-            if(minYear != null && maxYear != null) return criteriaBuilder.between(root.get("year"), minYear, maxYear);
-            else if( minYear != null)    return criteriaBuilder.greaterThan(root.get("year"), minYear);
-            else if (maxYear != null)   return criteriaBuilder.lessThan(root.get("year"), maxYear);
+            if(year != null ) return criteriaBuilder.equal(root.get("year"), year);
             else return null;
         });
     }
@@ -40,7 +38,12 @@ public class VehicleSpecification {
 
     protected static Specification<VehicleModel> hasModel(String model) {
         return (root, query, criteriaBuilder) ->
-                model == null ? null : criteriaBuilder.like(criteriaBuilder.lower(root.get("MODEL")), "%" + model.toLowerCase() + "%");
+                model == null ? null : criteriaBuilder.like(criteriaBuilder.lower(root.get("model")), "%" + model.toLowerCase() + "%");
+    }
+
+    protected static Specification<VehicleModel> hasLicensePlate(String licensePlate) {
+        return (root, query, criteriaBuilder) ->
+                licensePlate == null ? null : criteriaBuilder.like(criteriaBuilder.lower(root.get("licensePlate")), "%" + licensePlate.toLowerCase() + "%");
     }
 
     public static Specification<VehicleModel> hasRentedStatus(boolean rented) {

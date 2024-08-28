@@ -33,18 +33,18 @@ public class VehicleController {
     @GetMapping
     public ResponseEntity<List<VehicleModel>> getVehicles(
             @RequestParam(value = "type", required = false) VehicleType type,
-            @RequestParam(value = "minYear", required = false) Integer minYear,
-            @RequestParam(value = "maxYear", required = false) Integer maxYear,
+            @RequestParam(value = "year", required = false) Integer year,
             @RequestParam(value = "color", required = false) String color,
             @RequestParam(value = "rented", required = false) Boolean rented,
             @RequestParam(value = "brand", required = false) String brand,
+            @RequestParam(value = "licensePlate", required = false) String licensePlate,
             @RequestParam(value = "model", required = false) String model,
             @RequestParam(value = "page", defaultValue = "1", required = false) Integer page,
-            @RequestParam(value = "size", defaultValue = "5", required = false) Integer size
+            @RequestParam(value = "size", defaultValue = "2", required = false) Integer size
     ) {
         if (page < 1) page = 1;
         Pageable pageable = PageRequest.of(page - 1, size);
-        Page<VehicleModel> vehiclePage = vehicleService.getVehicles(type, minYear, maxYear, color, rented, brand, model, pageable);
+        Page<VehicleModel> vehiclePage = vehicleService.getVehicles(type, year, color, rented, brand, model,licensePlate ,pageable);
         HttpHeaders headers = PaginationHeaders.createPaginationHeaders(vehiclePage);
         return ResponseEntity.status(HttpStatus.OK).headers(headers).body(vehiclePage.getContent());
     }

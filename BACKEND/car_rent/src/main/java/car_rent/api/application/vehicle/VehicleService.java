@@ -20,21 +20,22 @@ public class VehicleService {
 
     protected Page<VehicleModel> getVehicles(
             VehicleType type,
-            Integer minYear,
-            Integer maxYear,
+            Integer year,
             String color,
             Boolean rented,
             String brand,
             String model,
+            String licensePlate,
             Pageable pageable
     ) {
 
         Specification<VehicleModel> spec = Specification
                 .where(VehicleSpecification.hasColor(color))
-                .and(VehicleSpecification.hasYear(minYear, maxYear))
+                .and(VehicleSpecification.hasYear(year))
                 .and(VehicleSpecification.hasRented(rented))
                 .and(VehicleSpecification.hasType(type))
                 .and(VehicleSpecification.hasBrand(brand))
+                .and(VehicleSpecification.hasLicensePlate(licensePlate))
                 .and(VehicleSpecification.hasModel(model));
 
         return vehicleRepository.findAll(spec, pageable);
